@@ -1,0 +1,87 @@
+<!-- ==========================================================
+     LAYOUT 16: RANKING (POZIOME SŁUPKI) Z NAWIASEM PARETO
+     Zastosowanie: Lista 6–10 pozycji posortowana malejąco; "kilka pozycji daje większość".
+     LLM TIP: Szerokość słupka = wartość / max * 100%. Sortuj malejąco. Top N w --primary, reszta neutralna.
+              Nawias SVG (wysokość = N * 40px + (N-1) * 4px) spina top N, etykieta HTML podaje sumę udziału.
+     ========================================================== -->
+<div class="slide-container" data-title="Trzy produkty dają 52% przychodu" data-type="Ranking słupkowy">
+  <header class="slide-header">
+    <span class="slide-kicker">PRZYCHÓD ROCZNY WEDŁUG PRODUKTU // MLN PLN I UDZIAŁ</span>
+    <h2 class="slide-title">Trzy produkty dają 52% przychodu</h2>
+  </header>
+
+  <div class="slide-body">
+    <div style="display: grid; grid-template-columns: 1fr 200px; gap: 24px;">
+
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; font-weight: 600;">Laptop Ultrabook Pro 15</div>
+          <div style="height: 24px; width: 100%; background: var(--primary); border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums;">1,97 <span style="font-weight: 500; color: var(--text-muted);">· 21%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; font-weight: 600;">Klimatyzator EcoCool</div>
+          <div style="height: 24px; width: 74%; background: var(--primary); border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums;">1,46 <span style="font-weight: 500; color: var(--text-muted);">· 16%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; font-weight: 600;">Smartwatch ActiveFit 3</div>
+          <div style="height: 24px; width: 71.5%; background: var(--primary); border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums;">1,41 <span style="font-weight: 500; color: var(--text-muted);">· 15%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Monitor Ergonomiczny 4K</div>
+          <div style="height: 24px; width: 60.3%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">1,19 <span style="color: var(--text-muted);">· 13%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Oczyszczacz PureAir Max</div>
+          <div style="height: 24px; width: 47.1%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,93 <span style="color: var(--text-muted);">· 10%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Słuchawki ANC Pro</div>
+          <div style="height: 24px; width: 37.4%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,74 <span style="color: var(--text-muted);">· 8%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Tablet Graficzny Creator 12</div>
+          <div style="height: 24px; width: 30%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,59 <span style="color: var(--text-muted);">· 6%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Stacja Dokująca USB-C</div>
+          <div style="height: 24px; width: 23.8%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,47 <span style="color: var(--text-muted);">· 5%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Klawiatura RGB</div>
+          <div style="height: 24px; width: 15.6%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,31 <span style="color: var(--text-muted);">· 3%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Kamera Smart WiFi</div>
+          <div style="height: 24px; width: 15.6%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,31 <span style="color: var(--text-muted);">· 3%</span></div>
+        </div>
+      </div>
+
+      <!-- NAWIAS PARETO: wysokość 3 * 40 + 2 * 4 = 128px -->
+      <div class="fragment" style="position: relative; height: 128px;">
+        <svg viewBox="0 0 16 128" style="position: absolute; left: 0; top: 0; width: 16px; height: 128px;">
+          <path d="M 2 2 H 10 V 126 H 2" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div style="position: absolute; left: 28px; top: 0; height: 128px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 48px; font-weight: 800; color: var(--primary); line-height: 1;">52%</div>
+          <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">przychodu</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>PREZENTACJA BIZNESOWA</span>
+    <span>Slajd X</span>
+  </div>
+</div>

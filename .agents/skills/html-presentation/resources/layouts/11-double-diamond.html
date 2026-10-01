@@ -1,0 +1,71 @@
+<!-- ==========================================================
+     LAYOUT 11: PODWÓJNY DIAMENT (DOUBLE DIAMOND)
+     Zastosowanie: Fazy projektowe rozbieżności i zbieżności (Odkryj -> Zdefiniuj -> Opracuj -> Wdróż).
+     LLM TIP: Dwa romby w SVG symbolizują przestrzeń problemu i przestrzeń rozwiązania ze strzałkami.
+     ========================================================== -->
+<div class="slide-container" data-title="Podwójny Diament" data-type="Double Diamond">
+  <header class="slide-header">
+    <span class="slide-kicker">DESIGN FRAMEWORK // DOUBLE DIAMOND</span>
+    <h2 class="slide-title">Proces Odkrywania Problemu i Projektowania Rozwiązania</h2>
+  </header>
+
+  <div class="slide-body" style="justify-content: center; align-items: center;">
+
+    <div style="width: 100%; max-width: 960px; display: flex; flex-direction: column; align-items: center;">
+
+      <!-- PODWÓJNY ROMB W SVG ZE STRZAŁKAMI KIERUNKOWYMI -->
+      <svg viewBox="0 0 900 240" style="width: 100%; height: 240px;">
+        <defs>
+          <marker id="diamondArrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <polygon points="0 1, 8 4, 0 7" fill="var(--primary)" />
+          </marker>
+          <marker id="diamondArrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <polygon points="0 1, 8 4, 0 7" fill="var(--success)" />
+          </marker>
+        </defs>
+
+        <!-- DIAMENT 1: PRZESTRZEŃ PROBLEMU (BŁĘKIT) -->
+        <polygon points="50,120 250,20 450,120 250,220" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="3" />
+        <line x1="250" y1="20" x2="250" y2="220" stroke="var(--primary)" stroke-width="2" stroke-dasharray="4 4" />
+        <line x1="30" y1="120" x2="48" y2="120" stroke="var(--primary)" stroke-width="3" marker-end="url(#diamondArrowBlue)" />
+
+        <!-- DIAMENT 2: PRZESTRZEŃ ROZWIĄZANIA (ZIELEŃ) -->
+        <polygon points="450,120 650,20 850,120 650,220" fill="var(--success-light)" stroke="var(--success)" stroke-width="3" />
+        <line x1="650" y1="20" x2="650" y2="220" stroke="var(--success)" stroke-width="2" stroke-dasharray="4 4" />
+        <line x1="840" y1="120" x2="865" y2="120" stroke="var(--success)" stroke-width="3" marker-end="url(#diamondArrowGreen)" />
+      </svg>
+
+      <!-- 4 FAZY W FORMACIE HTML POD ROMBAMI -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; margin-top: 20px; text-align: center;">
+
+        <div class="fragment">
+          <div style="font-size: 16px; font-weight: 700; color: var(--text-dark);">1. Odkryj</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Wywiady i mapowanie luk</div>
+        </div>
+
+        <div class="fragment">
+          <div style="font-size: 16px; font-weight: 700; color: var(--text-dark);">2. Zdefiniuj</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Synteza i wybór priorytetu</div>
+        </div>
+
+        <div class="fragment">
+          <div style="font-size: 16px; font-weight: 700; color: var(--text-dark);">3. Opracuj</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Makiety i testy architektoniczne</div>
+        </div>
+
+        <div class="fragment">
+          <div style="font-size: 16px; font-weight: 700; color: var(--text-dark);">4. Wdróż</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Wdrożenie produkcyjne i ewaluacja</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="slide-footer">
+    <span>PREZENTACJA BIZNESOWA</span>
+    <span>Slajd X</span>
+  </div>
+</div>

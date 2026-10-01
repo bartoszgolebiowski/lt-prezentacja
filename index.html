@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podsumowanie roku - sprzedaż</title>
+  <!-- Google Fonts: Inter, Plus Jakarta Sans, DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;600;700;800;900&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================
+       RESET & ROOT VARIABLES
+       ========================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Motyw Domyślny: Transition Technologies PSC */
+    :root, [data-theme="ttpsc"] {
+      --font-main: 'Montserrat', Arial, sans-serif;
+      --font-fallback: 'Avenir Next LT Pro', Arial, sans-serif;
+
+      /* Kolory tła */
+      --bg-dark: #2B0D30;           /* Ciemna purpura bazowa dla wariantu dark */
+      --bg-dark-card: #3D1344;
+      --bg-light: #FBF7FB;          /* Rozbielony odcień bazowany na Klasycznym Wrzosie */
+      --bg-white: #FFFFFF;
+
+      /* Typografia / Teksty */
+      --text-dark: #1F1F1F;
+      --text-muted: #6B7280;
+      --text-light: #FFFFFF;
+      --text-light-muted: #D9D9D9;  /* Strategiczna Szarość */
+
+      /* Główne kolory marki TTPSC */
+      --primary: #7B2D85;           /* Kreatywna Purpura */
+      --primary-light: #ECD3ED;     /* Klasyczny Wrzos */
+      --accent: #D03A8C;            /* Płaski Róż */
+      --accent-light: #FBE6F1;
+
+      /* Kolory funkcyjne / Akcentowe */
+      --success: #64B237;           /* Nowoczesna Zieleń */
+      --success-light: #EFF8EB;
+      --danger: #E11D48;
+      --danger-light: #FFF1F2;
+      --warning: #F59E0B;
+      --warning-light: #FEF3C7;
+
+      /* Obramowania i linie */
+      --border-light: #D9D9D9;      /* Strategiczna Szarość */
+      --border-dark: #4A1A52;
+
+      /* Dodatkowe gradienty marki */
+      --primary-gradient: linear-gradient(135deg, #7B2D85 0%, #D03A8C 100%);
+    }
+
+    /* Motyw: PwC */
+    [data-theme="pwc"] {
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-dark: #1E1E1E;
+      --bg-dark-card: #2B2B2B;
+      --bg-light: #FAF9F6;
+      --bg-white: #FFFFFF;
+      --text-dark: #1E1E1E;
+      --text-muted: #666666;
+      --text-light: #FFFFFF;
+      --text-light-muted: #B3B3B3;
+      --primary: #D04A02;
+      --primary-light: #FFF3EB;
+      --accent: #EB8C00;
+      --accent-light: #FEF7ED;
+      --success: #107C41;
+      --success-light: #F0FDF4;
+      --danger: #E0301E;
+      --danger-light: #FFF1F2;
+      --warning: #FFB600;
+      --warning-light: #FEF9C3;
+      --border-light: #E5E0D8;
+      --border-dark: #333333;
+    }
+
+    /* Motyw: CyberArk */
+    [data-theme="cyberark"] {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-dark: #00122A;
+      --bg-dark-card: #081E3D;
+      --bg-light: #F3F6FA;
+      --bg-white: #FFFFFF;
+      --text-dark: #071529;
+      --text-muted: #51627B;
+      --text-light: #FFFFFF;
+      --text-light-muted: #8EA3BF;
+      --primary: #0066CC;
+      --primary-light: #EDF5FF;
+      --accent: #00B4D8;
+      --accent-light: #E6F8FB;
+      --success: #059669;
+      --success-light: #ECFDF5;
+      --danger: #E4002B;
+      --danger-light: #FFF1F2;
+      --warning: #D97706;
+      --warning-light: #FEF3C7;
+      --border-light: #D6E0EC;
+      --border-dark: #0C2B54;
+    }
+
+    /* Motyw: Palo Alto Networks */
+    [data-theme="paloalto"] {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-dark: #0F141C;
+      --bg-dark-card: #181F2C;
+      --bg-light: #F4F6F8;
+      --bg-white: #FFFFFF;
+      --text-dark: #12161F;
+      --text-muted: #556275;
+      --text-light: #FFFFFF;
+      --text-light-muted: #9BA7B7;
+      --primary: #FA582D;
+      --primary-light: #FFF0EB;
+      --accent: #00C0F3;
+      --accent-light: #E6F9FE;
+      --success: #10B981;
+      --success-light: #ECFDF5;
+      --danger: #E11D48;
+      --danger-light: #FFF1F2;
+      --warning: #F59E0B;
+      --warning-light: #FEF3C7;
+      --border-light: #DCE1E7;
+      --border-dark: #222B3D;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: #05070B;
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* PROGRESS BAR */
+    #deck-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      background: var(--primary);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+    }
+
+    /* VIEWPORT KONTENER SLAJDU */
+    #deck-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Ścisłe wymiary canvasu: 1280px x 720px */
+    .slide-container {
+      width: 1280px;
+      height: 720px;
+      min-width: 1280px;
+      min-height: 720px;
+      max-width: 1280px;
+      max-height: 720px;
+      padding: 48px 64px;
+      box-sizing: border-box;
+      display: none;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-light);
+      border-radius: 4px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      transform-origin: center center;
+      transition: opacity 0.2s ease;
+    }
+
+    .slide-container.active {
+      display: flex;
+    }
+
+    .slide-dark {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+    .slide-white {
+      background: var(--bg-white);
+    }
+
+    /* Krokowe odsłanianie */
+    .fragment {
+      opacity: 0.15;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .fragment.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Typografia nagłówków */
+    .slide-header {
+      margin-bottom: 28px;
+      flex-shrink: 0;
+    }
+    .slide-kicker {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .slide-dark .slide-kicker {
+      color: #38BDF8;
+    }
+    .slide-title {
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text-dark);
+    }
+    .slide-dark .slide-title {
+      color: #FFFFFF;
+    }
+
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 0;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .bullet-list li {
+      font-size: 20px;
+      line-height: 1.5;
+      color: #334155;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .bullet-list li::before {
+      content: "—";
+      color: var(--primary);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .slide-dark .slide-footer {
+      border-top-color: var(--border-dark);
+      color: var(--text-light-muted);
+    }
+
+    /* Pasek nawigacji */
+    #controls {
+      position: fixed;
+      bottom: 16px;
+      display: flex;
+      gap: 10px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(10px);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      z-index: 100;
+      align-items: center;
+      color: #FFFFFF;
+      font-size: 13px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    #controls button {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-size: 15px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      transition: background 0.15s ease;
+    }
+    #controls button:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    /* Grid Overlay */
+    #grid-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 7, 11, 0.94);
+      backdrop-filter: blur(14px);
+      z-index: 2000;
+      display: none;
+      flex-direction: column;
+      padding: 32px 48px;
+      overflow-y: auto;
+    }
+    #grid-overlay.active { display: flex; }
+    .grid-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      color: #FFFFFF;
+    }
+    .grid-header h3 { font-size: 20px; font-weight: 700; }
+    .grid-close-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #FFF;
+      font-size: 18px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .grid-deck {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .grid-thumb {
+      background: #141B2D;
+      border: 2px solid #1E293B;
+      border-radius: 8px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 160px;
+      color: #FFFFFF;
+    }
+    .grid-thumb:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .grid-thumb.active { border-color: var(--primary); background: #1E293B; }
+    .grid-thumb-num { font-size: 12px; font-weight: 700; color: var(--primary); }
+    .grid-thumb-title { font-size: 14px; font-weight: 600; line-height: 1.3; margin-top: 6px; color: #F8FAFC; }
+    .grid-thumb-type { font-size: 11px; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Admin Backdrop & Dialog */
+    .admin-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .admin-backdrop.active { display: flex; }
+    .admin-dialog {
+      background: #0B1120;
+      border: 1px solid #1E293B;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 740px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      color: #F8FAFC;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid #1E293B;
+    }
+    .admin-badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #38BDF8;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .admin-header h2 { font-size: 19px; font-weight: 700; margin: 0; color: #FFFFFF; }
+    .admin-btn-icon {
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: #94A3B8;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .admin-btn-icon:hover { background: rgba(255,255,255,0.18); color: #FFFFFF; }
+    .admin-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .admin-section {
+      background: #131E36;
+      border: 1px solid #1E293B;
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .admin-section h3 { font-size: 15px; font-weight: 700; color: #FFFFFF; margin-bottom: 6px; }
+    .admin-hint { font-size: 13px; color: #94A3B8; margin-bottom: 14px; line-height: 1.4; }
+    .admin-row { display: flex; gap: 12px; align-items: center; }
+    .admin-select, .admin-input {
+      background: #0B1120;
+      border: 1px solid #334155;
+      color: #FFFFFF;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      flex: 1;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .admin-select:focus, .admin-input:focus { border-color: #38BDF8; }
+    .admin-btn-primary {
+      background: #2563EB;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+    .admin-btn-primary:hover { background: #1D4ED8; }
+    .admin-btn-success {
+      background: #16A34A;
+      color: #FFFFFF;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .admin-btn-success:hover { background: #15803D; }
+    .admin-btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: #E2E8F0;
+      border: 1px solid #334155;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .admin-btn-secondary:hover { background: rgba(255,255,255,0.15); }
+    .admin-btn-danger {
+      background: #DC2626;
+      color: #FFFFFF;
+      border: none;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .admin-btn-sm { padding: 4px 10px; font-size: 12px; }
+    .admin-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .admin-grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+    .admin-field label { display: block; font-size: 12px; font-weight: 600; color: #94A3B8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .admin-colors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .admin-color-item label { display: block; font-size: 11px; font-weight: 600; color: #94A3B8; margin-bottom: 6px; }
+    .admin-color-picker-box { display: flex; align-items: center; background: #0B1120; border: 1px solid #334155; border-radius: 8px; padding: 4px 6px; gap: 6px; }
+    .admin-color-picker-box input[type="color"] { border: none; background: none; width: 26px; height: 26px; cursor: pointer; border-radius: 4px; padding: 0; }
+    .admin-input-color { background: none; border: none; color: #FFFFFF; font-family: monospace; font-size: 12px; width: 65px; outline: none; }
+    .admin-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .admin-status-msg { margin-top: 10px; font-size: 13px; padding: 8px 12px; border-radius: 6px; display: none; }
+    .admin-status-success { display: block; background: rgba(22, 163, 74, 0.2); border: 1px solid #16A34A; color: #86EFAC; }
+    .admin-checkbox-label { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #CBD5E1; cursor: pointer; }
+    .admin-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-top: 1px solid #1E293B;
+      background: #080D1A;
+      border-radius: 0 0 16px 16px;
+    }
+    body.hide-controls #controls { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    body.hide-controls:hover #controls { opacity: 1; pointer-events: auto; }
+
+    /* REGUŁY DRUKU / PDF */
+    @media print {
+      @page { size: 1280px 720px; margin: 0; }
+      body { background: transparent !important; overflow: visible !important; }
+      #controls, #deck-progress, #grid-overlay, #admin-modal { display: none !important; }
+      #deck-wrapper { display: block !important; width: auto !important; height: auto !important; }
+      .slide-container {
+        display: flex !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        transform: none !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+      }
+      .fragment { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body data-theme="ttpsc">
+
+  <div id="deck-progress"></div>
+
+  <div id="deck-wrapper">
+    <!-- 1: TITLE -->
+<div class="slide-container slide-dark active" data-title="Rok w sprzedaży: 9,4 mln PLN" data-type="Title">
+  <div class="slide-body" style="justify-content: center; position: relative;">
+    <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.15; pointer-events: none;">
+      <circle cx="1100" cy="200" r="300" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="8 8" />
+      <circle cx="1100" cy="200" r="450" fill="none" stroke="var(--primary)" stroke-width="1.5" />
+    </svg>
+    <div style="max-width: 920px; z-index: 2;">
+      <span class="slide-kicker" style="color: var(--accent); margin-bottom: 16px;">PODSUMOWANIE ROKU</span>
+      <h1 class="slide-title" style="font-size: 56px; line-height: 1.1; margin-bottom: 24px; color: #FFFFFF;">Rok w sprzedaży: 9,4 mln PLN</h1>
+      <p style="font-size: 22px; color: var(--text-light-muted); line-height: 1.4; margin-bottom: 44px;">Co sprzedało się najlepiej i co robimy w Q1.</p>
+      <div style="display: flex; gap: 36px; font-size: 14px; color: var(--text-light-muted); border-top: 1px solid var(--border-dark); padding-top: 24px;">
+        <div>Audytorium: <strong style="color: #CBD5E1;">Zarząd</strong></div>
+        <div>Data: <strong style="color: #CBD5E1;">1 października 2026</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><span>POUFNE // DO UŻYTKU WEWNĘTRZNEGO</span><span>1</span></div>
+</div>
+
+
+<!-- ==========================================================
+     LAYOUT 15: WYKRES KOLUMNOWY + KPI
+     Zastosowanie: Trend w czasie (kwartały, miesiące) i jedna kluczowa liczba obok.
+     LLM TIP: Wysokość słupka = wartość * SKALA. Tu SKALA = 290px / max (2,58 mln) = 112,4 px/mln.
+              Oś od ZERA. Jeden słupek w kolorze --primary (wniosek), reszta neutralna.
+              Linia przerywana = poziom bazowy (bottom = 40px etykieta + wysokość słupka bazy).
+     ========================================================== -->
+<div class="slide-container" data-title="Przychód Q4 wyższy o 32% niż Q1" data-type="Wykres kolumnowy">
+  <header class="slide-header">
+    <span class="slide-kicker">WYNIK ROCZNY // PRZYCHÓD KWARTALNY</span>
+    <h2 class="slide-title">Przychód Q4 wyższy o 32% niż Q1</h2>
+  </header>
+
+  <div class="slide-body" style="flex-direction: row; gap: 56px; align-items: stretch;">
+
+    <!-- KPI PO LEWEJ -->
+    <div style="width: 320px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+      <div style="font-size: 60px; font-weight: 800; line-height: 1; white-space: nowrap; color: var(--text-dark); letter-spacing: -0.03em; font-variant-numeric: tabular-nums;">9,38 mln</div>
+      <div style="font-size: 18px; color: var(--text-muted);">PLN przychodu w roku</div>
+      <div style="display: flex; align-items: center; gap: 12px; margin-top: 20px;">
+        <svg viewBox="0 0 60 70" style="width: 40px; height: 48px;">
+          <defs>
+            <marker id="colTrendArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+              <polygon points="0 6, 4 0, 8 6" fill="var(--success)" />
+            </marker>
+          </defs>
+          <path d="M 10 60 Q 15 20 42 16" fill="none" stroke="var(--success)" stroke-width="5" stroke-linecap="round" marker-end="url(#colTrendArrow)" />
+        </svg>
+        <div>
+          <div style="font-size: 36px; font-weight: 800; color: var(--success); line-height: 1;">+32%</div>
+          <div style="font-size: 15px; color: var(--text-muted); margin-top: 4px;">Q4 wobec Q1</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WYKRES -->
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div style="position: relative; display: grid; grid-template-columns: repeat(4, 1fr); height: 400px;">
+
+        <!-- Linia bazowa Q1 -->
+        <div style="position: absolute; left: 0; right: 0; bottom: 257px; border-top: 2px dashed var(--text-muted); opacity: 0.6; z-index: 2;"></div>
+
+        <div style="display: flex; flex-direction: column; justify-content: flex-end; align-items: center;">
+          <div style="font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums;">1,93</div>
+          <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;">baza</div>
+          <div style="width: 110px; height: 217px; background: #CBD5E1; border-radius: 4px 4px 0 0;"></div>
+          <div style="width: 100%; border-top: 2px solid #CBD5E1; padding-top: 10px; height: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q1</div>
+        </div>
+
+        <div class="fragment" style="display: flex; flex-direction: column; justify-content: flex-end; align-items: center;">
+          <div style="font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums;">2,31</div>
+          <div style="font-size: 14px; font-weight: 700; color: var(--success); margin-bottom: 8px;">+20%</div>
+          <div style="width: 110px; height: 260px; background: #CBD5E1; border-radius: 4px 4px 0 0;"></div>
+          <div style="width: 100%; border-top: 2px solid #CBD5E1; padding-top: 10px; height: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q2</div>
+        </div>
+
+        <div class="fragment" style="display: flex; flex-direction: column; justify-content: flex-end; align-items: center;">
+          <div style="font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums;">2,58</div>
+          <div style="font-size: 14px; font-weight: 700; color: var(--success); margin-bottom: 8px;">+33% szczyt</div>
+          <div style="width: 110px; height: 290px; background: #CBD5E1; border-radius: 4px 4px 0 0;"></div>
+          <div style="width: 100%; border-top: 2px solid #CBD5E1; padding-top: 10px; height: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q3</div>
+        </div>
+
+        <div class="fragment" style="display: flex; flex-direction: column; justify-content: flex-end; align-items: center;">
+          <div style="font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--primary);">2,55</div>
+          <div style="font-size: 14px; font-weight: 700; color: var(--success); margin-bottom: 8px;">+32%</div>
+          <div style="width: 110px; height: 287px; background: var(--primary); border-radius: 4px 4px 0 0;"></div>
+          <div style="width: 100%; border-top: 2px solid #CBD5E1; padding-top: 10px; height: 40px; text-align: center; font-size: 15px; font-weight: 700; color: var(--primary);">Q4</div>
+        </div>
+
+      </div>
+      <div style="font-size: 14px; color: var(--text-muted); margin-top: 6px;">mln PLN. Linia przerywana: poziom Q1.</div>
+    </div>
+
+  </div>
+
+  <div class="slide-footer">
+    <span>PODSUMOWANIE ROKU</span>
+    <span>2</span>
+  </div>
+</div>
+
+<!-- ==========================================================
+     LAYOUT 16: RANKING (POZIOME SŁUPKI) Z NAWIASEM PARETO
+     Zastosowanie: Lista 6–10 pozycji posortowana malejąco; "kilka pozycji daje większość".
+     LLM TIP: Szerokość słupka = wartość / max * 100%. Sortuj malejąco. Top N w --primary, reszta neutralna.
+              Nawias SVG (wysokość = N * 40px + (N-1) * 4px) spina top N, etykieta HTML podaje sumę udziału.
+     ========================================================== -->
+<div class="slide-container" data-title="Trzy produkty dają 52% przychodu" data-type="Ranking słupkowy">
+  <header class="slide-header">
+    <span class="slide-kicker">PRZYCHÓD ROCZNY WEDŁUG PRODUKTU // MLN PLN I UDZIAŁ</span>
+    <h2 class="slide-title">Trzy produkty dają 52% przychodu</h2>
+  </header>
+
+  <div class="slide-body">
+    <div style="display: grid; grid-template-columns: 1fr 200px; gap: 24px;">
+
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; font-weight: 600;">Laptop Ultrabook Pro 15</div>
+          <div style="height: 24px; width: 100%; background: var(--primary); border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums;">1,97 <span style="font-weight: 500; color: var(--text-muted);">· 21%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; font-weight: 600;">Klimatyzator EcoCool</div>
+          <div style="height: 24px; width: 74%; background: var(--primary); border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums;">1,46 <span style="font-weight: 500; color: var(--text-muted);">· 16%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; font-weight: 600;">Smartwatch ActiveFit 3</div>
+          <div style="height: 24px; width: 71.5%; background: var(--primary); border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums;">1,41 <span style="font-weight: 500; color: var(--text-muted);">· 15%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Monitor Ergonomiczny 4K</div>
+          <div style="height: 24px; width: 60.3%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">1,19 <span style="color: var(--text-muted);">· 13%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Oczyszczacz PureAir Max</div>
+          <div style="height: 24px; width: 47.1%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,93 <span style="color: var(--text-muted);">· 10%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Słuchawki ANC Pro</div>
+          <div style="height: 24px; width: 37.4%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,74 <span style="color: var(--text-muted);">· 8%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Tablet Graficzny Creator 12</div>
+          <div style="height: 24px; width: 30%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,59 <span style="color: var(--text-muted);">· 6%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Stacja Dokująca USB-C</div>
+          <div style="height: 24px; width: 23.8%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,47 <span style="color: var(--text-muted);">· 5%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Klawiatura RGB</div>
+          <div style="height: 24px; width: 15.6%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,31 <span style="color: var(--text-muted);">· 3%</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 240px 1fr 150px; gap: 16px; align-items: center; height: 40px;">
+          <div style="font-size: 17px; color: #334155;">Kamera Smart WiFi</div>
+          <div style="height: 24px; width: 15.6%; background: #CBD5E1; border-radius: 0 4px 4px 0;"></div>
+          <div style="font-size: 17px; font-variant-numeric: tabular-nums; color: #334155;">0,31 <span style="color: var(--text-muted);">· 3%</span></div>
+        </div>
+      </div>
+
+      <!-- NAWIAS PARETO: wysokość 3 * 40 + 2 * 4 = 128px -->
+      <div class="fragment" style="position: relative; height: 128px;">
+        <svg viewBox="0 0 16 128" style="position: absolute; left: 0; top: 0; width: 16px; height: 128px;">
+          <path d="M 2 2 H 10 V 126 H 2" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div style="position: absolute; left: 28px; top: 0; height: 128px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 48px; font-weight: 800; color: var(--primary); line-height: 1;">52%</div>
+          <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">przychodu</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>PODSUMOWANIE ROKU</span>
+    <span>3</span>
+  </div>
+</div>
+
+<!-- ==========================================================
+     LAYOUT 17: MAPA CIEPŁA (HEATMAP) PRODUKT x OKRES
+     Zastosowanie: Sezonowość, wzorce w czasie, porównanie wielu pozycji naraz (8–12 wierszy).
+     LLM TIP: Komórka = udział okresu w sumie wiersza (%). Natężenie --m = udział * 1,9 (max 100).
+              Wiersze grupuj według wzorca; etykieta grupy tylko przy pierwszym wierszu grupy.
+              Jeden kolor (--primary) w różnych natężeniach. Komórki >= 55% dostają klasę .hi (biały tekst).
+     ========================================================== -->
+<div class="slide-container" data-title="Pięć rytmów sprzedaży wyznacza zapasy" data-type="Heatmap">
+  <style>
+    .hm-row { display: grid; grid-template-columns: 230px repeat(4, 1fr) 190px; gap: 4px; align-items: center; height: 35px; }
+    .hm-row.g { margin-top: 10px; }
+    .hm-name { font-size: 16px; color: var(--text-dark); }
+    .hm-c { height: 35px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; border-radius: 4px; background: color-mix(in srgb, var(--primary) var(--m), #FFFFFF); color: var(--text-dark); }
+    .hm-c.hi { color: #FFFFFF; }
+    .hm-tag { font-size: 14px; font-weight: 700; color: var(--primary); padding-left: 12px; }
+    .hm-head { font-size: 14px; font-weight: 700; color: var(--text-muted); text-align: center; }
+  </style>
+  <header class="slide-header">
+    <span class="slide-kicker">SEZONOWOŚĆ // UDZIAŁ KWARTAŁU W ROCZNYM PRZYCHODZIE PRODUKTU</span>
+    <h2 class="slide-title">Pięć rytmów sprzedaży wyznacza zapasy</h2>
+  </header>
+
+  <div class="slide-body">
+    <div class="hm-row" style="height: 24px;">
+      <div></div><div class="hm-head">Q1</div><div class="hm-head">Q2</div><div class="hm-head">Q3</div><div class="hm-head">Q4</div><div></div>
+    </div>
+
+    <div class="hm-row">
+      <div class="hm-name">Klimatyzator EcoCool</div>
+      <div class="hm-c" style="--m:6%">3%</div><div class="hm-c hi" style="--m:82%">43%</div><div class="hm-c hi" style="--m:99%">52%</div><div class="hm-c" style="--m:4%">2%</div>
+      <div class="hm-tag">Lato</div>
+    </div>
+    <div class="hm-row">
+      <div class="hm-name">Kamera Smart WiFi</div>
+      <div class="hm-c" style="--m:36%">19%</div><div class="hm-c" style="--m:51%">27%</div><div class="hm-c hi" style="--m:57%">30%</div><div class="hm-c" style="--m:46%">24%</div>
+      <div></div>
+    </div>
+
+    <div class="hm-row g fragment">
+      <div class="hm-name">Oczyszczacz PureAir Max</div>
+      <div class="hm-c hi" style="--m:71%">37%</div><div class="hm-c" style="--m:15%">8%</div><div class="hm-c" style="--m:21%">11%</div><div class="hm-c hi" style="--m:83%">44%</div>
+      <div class="hm-tag">Zima</div>
+    </div>
+
+    <div class="hm-row g fragment">
+      <div class="hm-name">Słuchawki ANC Pro</div>
+      <div class="hm-c" style="--m:32%">17%</div><div class="hm-c" style="--m:36%">19%</div><div class="hm-c" style="--m:42%">22%</div><div class="hm-c hi" style="--m:80%">42%</div>
+      <div class="hm-tag">Pik w Q4</div>
+    </div>
+    <div class="hm-row fragment">
+      <div class="hm-name">Klawiatura RGB</div>
+      <div class="hm-c" style="--m:38%">20%</div><div class="hm-c" style="--m:35%">19%</div><div class="hm-c" style="--m:45%">24%</div><div class="hm-c hi" style="--m:73%">38%</div>
+      <div></div>
+    </div>
+    <div class="hm-row fragment">
+      <div class="hm-name">Tablet Graficzny Creator 12</div>
+      <div class="hm-c" style="--m:31%">17%</div><div class="hm-c" style="--m:33%">17%</div><div class="hm-c" style="--m:48%">25%</div><div class="hm-c hi" style="--m:78%">41%</div>
+      <div></div>
+    </div>
+    <div class="hm-row fragment">
+      <div class="hm-name">Smartwatch ActiveFit 3</div>
+      <div class="hm-c" style="--m:28%">15%</div><div class="hm-c" style="--m:39%">21%</div><div class="hm-c" style="--m:51%">27%</div><div class="hm-c hi" style="--m:72%">38%</div>
+      <div></div>
+    </div>
+
+    <div class="hm-row g fragment">
+      <div class="hm-name">Monitor Ergonomiczny 4K</div>
+      <div class="hm-c" style="--m:47%">25%</div><div class="hm-c" style="--m:48%">25%</div><div class="hm-c" style="--m:46%">24%</div><div class="hm-c" style="--m:49%">26%</div>
+      <div class="hm-tag">Stabilnie</div>
+    </div>
+    <div class="hm-row fragment">
+      <div class="hm-name">Stacja Dokująca USB-C</div>
+      <div class="hm-c" style="--m:43%">23%</div><div class="hm-c" style="--m:45%">24%</div><div class="hm-c" style="--m:47%">25%</div><div class="hm-c hi" style="--m:55%">29%</div>
+      <div></div>
+    </div>
+
+    <div class="hm-row g fragment">
+      <div class="hm-name">Laptop Ultrabook Pro 15</div>
+      <div class="hm-c hi" style="--m:57%">30%</div><div class="hm-c" style="--m:51%">27%</div><div class="hm-c" style="--m:44%">23%</div><div class="hm-c" style="--m:38%">20%</div>
+      <div class="hm-tag" style="color: var(--danger);">Spadek</div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>PODSUMOWANIE ROKU</span>
+    <span>4</span>
+  </div>
+</div>
+
+<!-- ==========================================================
+     LAYOUT 18: WYKRES LINIOWY Z ETYKIETAMI BEZPOŚREDNIMI + KOLUMNA ZMIAN
+     Zastosowanie: 2–3 serie w czasie, punkt przecięcia ("X wyprzedził Y"), zmiana między początkiem a końcem.
+     LLM TIP: y(v) = y0 - v * (y0 - ytop) / max. Tu y0=340, ytop=20, max=600 => y = 340 - 0,5333 * v.
+              x(i) = 50 + i * 220. Etykiety serii BEZPOŚREDNIO przy końcu linii (bez legendy), HTML absolute.
+              Osie i podziałka: linie w SVG, liczby w HTML (Text-Free SVG).
+              Kolumna po prawej: delta koniec - początek dla każdej serii.
+     ========================================================== -->
+<div class="slide-container" data-title="Smartwatch wyprzedził laptopa w Q4" data-type="Wykres liniowy">
+  <header class="slide-header">
+    <span class="slide-kicker">PRZYCHÓD KWARTALNY // TYS. PLN</span>
+    <h2 class="slide-title">Smartwatch wyprzedził laptopa w Q4</h2>
+  </header>
+
+  <div class="slide-body" style="flex-direction: row; gap: 40px; align-items: center;">
+
+    <!-- WYKRES 860 x 380 -->
+    <div style="position: relative; width: 860px; height: 380px; flex-shrink: 0;">
+      <svg viewBox="0 0 860 380" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+        <line x1="50" y1="340" x2="730" y2="340" stroke="#CBD5E1" stroke-width="2" />
+        <line x1="50" y1="233.3" x2="730" y2="233.3" stroke="#E2E8F0" stroke-width="1.5" />
+        <line x1="50" y1="126.7" x2="730" y2="126.7" stroke="#E2E8F0" stroke-width="1.5" />
+        <line x1="50" y1="20" x2="730" y2="20" stroke="#E2E8F0" stroke-width="1.5" />
+
+        <!-- Słuchawki (neutralna) -->
+        <polyline points="50,272.8 270,265.6 490,253.6 710,174.4" fill="none" stroke="#64748B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+        <g fill="#64748B"><circle cx="50" cy="272.8" r="5" /><circle cx="270" cy="265.6" r="5" /><circle cx="490" cy="253.6" r="5" /><circle cx="710" cy="174.4" r="5" /></g>
+
+        <!-- Laptop (spadek) -->
+        <polyline points="50,26.4 270,60 490,93.6 710,127.2" fill="none" stroke="var(--danger)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+        <g fill="var(--danger)"><circle cx="50" cy="26.4" r="6" /><circle cx="270" cy="60" r="6" /><circle cx="490" cy="93.6" r="6" /><circle cx="710" cy="127.2" r="6" /></g>
+
+        <!-- Smartwatch (wniosek) -->
+        <polyline points="50,229.1 270,184 490,138.9 710,55.7" fill="none" stroke="var(--primary)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+        <g fill="var(--primary)"><circle cx="50" cy="229.1" r="7" /><circle cx="270" cy="184" r="7" /><circle cx="490" cy="138.9" r="7" /><circle cx="710" cy="55.7" r="7" /></g>
+      </svg>
+
+      <!-- Podziałka osi Y -->
+      <div style="position: absolute; left: 0; width: 40px; top: 10px; text-align: right; font-size: 14px; color: var(--text-muted);">600</div>
+      <div style="position: absolute; left: 0; width: 40px; top: 116.7px; text-align: right; font-size: 14px; color: var(--text-muted);">400</div>
+      <div style="position: absolute; left: 0; width: 40px; top: 223.3px; text-align: right; font-size: 14px; color: var(--text-muted);">200</div>
+      <div style="position: absolute; left: 0; width: 40px; top: 330px; text-align: right; font-size: 14px; color: var(--text-muted);">0</div>
+
+      <!-- Oś X -->
+      <div style="position: absolute; top: 350px; left: 30px; width: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q1</div>
+      <div style="position: absolute; top: 350px; left: 250px; width: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q2</div>
+      <div style="position: absolute; top: 350px; left: 470px; width: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q3</div>
+      <div style="position: absolute; top: 350px; left: 690px; width: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q4</div>
+
+      <!-- Etykiety bezpośrednie przy końcach linii -->
+      <div style="position: absolute; left: 728px; top: 44px; white-space: nowrap; font-size: 16px; font-weight: 800; color: var(--primary);">Smartwatch 533</div>
+      <div style="position: absolute; left: 728px; top: 116px; white-space: nowrap; font-size: 16px; font-weight: 800; color: var(--danger);">Laptop 399</div>
+      <div style="position: absolute; left: 728px; top: 164px; white-space: nowrap; font-size: 16px; font-weight: 700; color: #64748B;">Słuchawki 311</div>
+    </div>
+
+    <!-- KOLUMNA ZMIAN Q4 vs Q1 -->
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 28px;">
+      <div style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);">Zmiana Q4 vs Q1</div>
+      <div class="fragment">
+        <div style="font-size: 40px; font-weight: 800; color: var(--primary); line-height: 1;">+325 tys.</div>
+        <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">Smartwatch</div>
+      </div>
+      <div class="fragment">
+        <div style="font-size: 40px; font-weight: 800; color: #64748B; line-height: 1;">+185 tys.</div>
+        <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">Słuchawki</div>
+      </div>
+      <div class="fragment">
+        <div style="font-size: 40px; font-weight: 800; color: var(--danger); line-height: 1;">-189 tys.</div>
+        <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">Laptop</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slide-footer">
+    <span>PODSUMOWANIE ROKU</span>
+    <span>5</span>
+  </div>
+</div>
+
+<!-- ==========================================================
+     LAYOUT 19: CTA — WIERSZE DECYZJI Z DOWODEM LICZBOWYM
+     Zastosowanie: Przedostatni slajd; 3 decyzje, każda z liczbą, która ją uzasadnia.
+     LLM TIP: Wiersze rozciągają się na całą wysokość (flex: 1). Liczba z dowodem po prawej = dane z wcześniejszych wykresów.
+     ========================================================== -->
+<div class="slide-container" data-title="Trzy decyzje na Q1" data-type="CTA">
+  <header class="slide-header">
+    <span class="slide-kicker">CALL TO ACTION // DECYZJE NA Q1</span>
+    <h2 class="slide-title">Trzy decyzje na Q1</h2>
+  </header>
+
+  <div class="slide-body" style="gap: 16px; padding-bottom: 16px;">
+
+    <div class="fragment" style="flex: 1; display: grid; grid-template-columns: 64px 1fr 300px; align-items: center; gap: 24px; background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 0 32px;">
+      <div style="font-size: 44px; font-weight: 900; color: var(--primary);">1</div>
+      <div>
+        <div style="font-size: 26px; font-weight: 700; color: var(--text-dark);">Smartwatch</div>
+        <div style="font-size: 18px; color: var(--text-muted); margin-top: 4px;">Zabezpiecz zapas na Q1.</div>
+      </div>
+      <div style="border-left: 2px solid var(--border-light); padding-left: 28px;">
+        <div style="font-size: 44px; font-weight: 800; color: var(--success); line-height: 1;">+156%</div>
+        <div style="font-size: 15px; color: var(--text-muted); margin-top: 4px;">wolumen Q1 → Q4</div>
+      </div>
+    </div>
+
+    <div class="fragment" style="flex: 1; display: grid; grid-template-columns: 64px 1fr 300px; align-items: center; gap: 24px; background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 0 32px;">
+      <div style="font-size: 44px; font-weight: 900; color: var(--primary);">2</div>
+      <div>
+        <div style="font-size: 26px; font-weight: 700; color: var(--text-dark);">Laptop</div>
+        <div style="font-size: 18px; color: var(--text-muted); margin-top: 4px;">Wyprzedaj rocznik, zrewiduj marżę.</div>
+      </div>
+      <div style="border-left: 2px solid var(--border-light); padding-left: 28px;">
+        <div style="font-size: 44px; font-weight: 800; color: var(--danger); line-height: 1;">-32%</div>
+        <div style="font-size: 15px; color: var(--text-muted); margin-top: 4px;">przychód Q1 → Q4</div>
+      </div>
+    </div>
+
+    <div class="fragment" style="flex: 1; display: grid; grid-template-columns: 64px 1fr 300px; align-items: center; gap: 24px; background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 0 32px;">
+      <div style="font-size: 44px; font-weight: 900; color: var(--primary);">3</div>
+      <div>
+        <div style="font-size: 26px; font-weight: 700; color: var(--text-dark);">Oczyszczacz</div>
+        <div style="font-size: 18px; color: var(--text-muted); margin-top: 4px;">Pakiet z filtrami przed sezonem.</div>
+      </div>
+      <div style="border-left: 2px solid var(--border-light); padding-left: 28px;">
+        <div style="font-size: 44px; font-weight: 800; color: var(--primary); line-height: 1;">81%</div>
+        <div style="font-size: 15px; color: var(--text-muted); margin-top: 4px;">przychodu w Q4 i Q1</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slide-footer">
+    <span>PODSUMOWANIE ROKU</span>
+    <span>6</span>
+  </div>
+</div>
+
+<!-- 8: CLOSING -->
+<div class="slide-container slide-dark" data-title="Pytania?" data-type="Finał">
+  <div class="slide-body" style="justify-content: center; position: relative;">
+    <svg viewBox="0 0 1280 720" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.12; pointer-events: none;">
+      <circle cx="150" cy="550" r="350" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 6" />
+    </svg>
+    <div style="max-width: 900px; z-index: 2;">
+      <span class="slide-kicker" style="color: var(--accent); margin-bottom: 16px;">PODSUMOWANIE // DYSKUSJA</span>
+      <h1 class="slide-title" style="font-size: 56px; line-height: 1.1; margin-bottom: 24px; color: #FFFFFF;">Dziękuję. Pytania?</h1>
+      <p style="font-size: 22px; color: var(--text-light-muted); line-height: 1.4; margin-bottom: 48px;">Zaczynamy od decyzji na Q1.</p>
+      <div style="display: flex; gap: 64px; border-top: 1px solid var(--border-dark); padding-top: 28px;">
+        <div><div style="font-size: 44px; font-weight: 800; color: #FFFFFF; line-height: 1;">9,38 mln</div><div style="font-size: 15px; color: var(--text-light-muted); margin-top: 6px;">PLN przychodu</div></div>
+        <div><div style="font-size: 44px; font-weight: 800; color: var(--accent); line-height: 1;">+32%</div><div style="font-size: 15px; color: var(--text-light-muted); margin-top: 6px;">Q4 wobec Q1</div></div>
+        <div><div style="font-size: 44px; font-weight: 800; color: #FFFFFF; line-height: 1;">3</div><div style="font-size: 15px; color: var(--text-light-muted); margin-top: 6px;">decyzje na Q1</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><span>POUFNE // DO UŻYTKU WEWNĘTRZNEGO</span><span>7</span></div>
+</div>
+
+  </div>
+
+  <!-- WIDOK SIATKI MINIATUR -->
+  <div id="grid-overlay">
+    <div class="grid-header">
+      <h3>Przegląd Slajdów (Grid View)</h3>
+      <button class="grid-close-btn" id="closeGridBtn">✕ Zamknij (Esc / G)</button>
+    </div>
+    <div class="grid-deck" id="gridDeck"></div>
+  </div>
+
+  <!-- PANEL ADMINISTRATORA -->
+  <div id="admin-modal" class="admin-backdrop">
+    <div class="admin-dialog">
+      <div class="admin-header">
+        <div class="admin-title-box">
+          <span class="admin-badge">TRYB ADMINISTRATORA</span>
+          <h2>Konfiguracja Motywów i Klientów</h2>
+        </div>
+        <button id="closeAdminBtn" class="admin-btn-icon" title="Zamknij (Alt+A / Esc)">✕</button>
+      </div>
+
+      <div class="admin-body">
+        <div class="admin-section">
+          <h3>1. Wybierz Motyw dla Prezentacji</h3>
+          <p class="admin-hint">Wybierz gotowy profil klienta lub motyw systemowy przed rozpoczęciem spotkania.</p>
+          <div class="admin-row">
+            <select id="adminThemeSelect" class="admin-select"></select>
+            <button id="launchDeckBtn" class="admin-btn-primary">▶ Odpal Czystą Prezentację</button>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <div class="admin-section-header">
+            <h3>2. Kreator Nowego Motywu Klienta</h3>
+            <button id="resetFormBtn" class="admin-btn-secondary admin-btn-sm">+ Nowy Klient</button>
+          </div>
+          <div class="admin-grid-form">
+            <div class="admin-field">
+              <label>ID Klienta (slug)</label>
+              <input type="text" id="themeIdInput" placeholder="np. volvo, allegro, pko" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label>Pełna Nazwa Klienta</label>
+              <input type="text" id="themeNameInput" placeholder="np. Volvo Group Poland" class="admin-input">
+            </div>
+          </div>
+          <div class="admin-field" style="margin-bottom: 16px;">
+            <label>Font Prezentacji</label>
+            <select id="themeFontSelect" class="admin-select">
+              <option value="'Inter', sans-serif">Inter (Standard McKinsey / Corporate)</option>
+              <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans (Tech / AI / SaaS)</option>
+              <option value="'DM Sans', sans-serif">DM Sans (Warm Editorial / Finanse)</option>
+              <option value="'Roboto', sans-serif">Roboto</option>
+              <option value="'Montserrat', sans-serif">Montserrat</option>
+            </select>
+          </div>
+
+          <div class="admin-colors-grid">
+            <div class="admin-color-item">
+              <label>Primary (Kolor Marki)</label>
+              <div class="admin-color-picker-box">
+                <input type="color" id="primaryPicker" value="#7B2D85">
+                <input type="text" id="primaryText" value="#7B2D85" class="admin-input-color">
+              </div>
+            </div>
+            <div class="admin-color-item">
+              <label>Accent (Drugi Wektor)</label>
+              <div class="admin-color-picker-box">
+                <input type="color" id="accentPicker" value="#D03A8C">
+                <input type="text" id="accentText" value="#D03A8C" class="admin-input-color">
+              </div>
+            </div>
+            <div class="admin-color-item">
+              <label>Dark BG (Tytuł & Finał)</label>
+              <div class="admin-color-picker-box">
+                <input type="color" id="darkBgPicker" value="#2B0D30">
+                <input type="text" id="darkBgText" value="#2B0D30" class="admin-input-color">
+              </div>
+            </div>
+            <div class="admin-color-item">
+              <label>Light BG (Meritum)</label>
+              <div class="admin-color-picker-box">
+                <input type="color" id="lightBgPicker" value="#FBF7FB">
+                <input type="text" id="lightBgText" value="#FBF7FB" class="admin-input-color">
+              </div>
+            </div>
+            <div class="admin-color-item">
+              <label>Text Dark (Treść)</label>
+              <div class="admin-color-picker-box">
+                <input type="color" id="textDarkPicker" value="#1F1F1F">
+                <input type="text" id="textDarkText" value="#1F1F1F" class="admin-input-color">
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-actions">
+            <button id="saveThemeBtn" class="admin-btn-success">💾 Zapisz i Aktywuj Motyw</button>
+            <button id="copyCssBtn" class="admin-btn-secondary">📋 Kopiuj Kod CSS</button>
+            <button id="deleteThemeBtn" class="admin-btn-danger" style="display:none;">🗑 Usuń Motyw</button>
+          </div>
+          <div id="adminStatusMsg" class="admin-status-msg"></div>
+        </div>
+
+        <div class="admin-section">
+          <h3>3. Tryb Dyskrecji Przed Klientem</h3>
+          <label class="admin-checkbox-label">
+            <input type="checkbox" id="hideControlsCheck">
+            Ukryj pływający pasek kontrolek (klient widzi wyłącznie czysty slajd, sterowanie strzałkami)
+          </label>
+        </div>
+      </div>
+
+      <div class="admin-footer">
+        <span class="admin-hint" style="margin-bottom:0;">Skrót wywołania panelu: <strong>Alt + A</strong> (niewidoczny dla klienta)</span>
+        <button id="closeAdminFooterBtn" class="admin-btn-secondary">Gotowe / Zamknij</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KONTROLKI NAWIGACJI -->
+  <div id="controls">
+    <button id="prevBtn" title="Wstecz (← / PageUp)">◀</button>
+    <span id="counter">1 / 1</span>
+    <button id="nextBtn" title="Dalej (Spacja / → / PageDown)">▶</button>
+    <button id="gridBtn" title="Widok siatki kafelków (G / Esc)">☷</button>
+    <button id="themeBtn" title="Szybka zmiana motywu">◑</button>
+    <button id="fsBtn" title="Tryb pełnoekranowy (F)">⛶</button>
+    <button id="adminBtn" title="Panel Administratora (Alt+A)">⚙</button>
+  </div>
+
+  <script>
+    /* ==========================================================
+       LOGIKA NAWIGACJI, FRAGMENTÓW I PANELU ADMINA
+       ========================================================== */
+    const slides = Array.from(document.querySelectorAll('.slide-container'));
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const fsBtn = document.getElementById('fsBtn');
+    const gridBtn = document.getElementById('gridBtn');
+    const themeBtn = document.getElementById('themeBtn');
+    const counter = document.getElementById('counter');
+    const progressBar = document.getElementById('deck-progress');
+    const gridOverlay = document.getElementById('grid-overlay');
+    const gridDeck = document.getElementById('gridDeck');
+    const closeGridBtn = document.getElementById('closeGridBtn');
+
+    let currentIndex = 0;
+    let themeIdx = 0;
+
+    const defaultThemes = [
+      { id: 'ttpsc', name: 'TT PSC (Kreatywna Purpura - Domyślny)', font: "'Montserrat', sans-serif", primary: '#7B2D85', accent: '#D03A8C', darkBg: '#2B0D30', lightBg: '#FBF7FB', textDark: '#1F1F1F', builtIn: true },
+      { id: 'pwc', name: 'PwC (Signature Orange)', font: "'Inter', sans-serif", primary: '#D04A02', accent: '#EB8C00', darkBg: '#1E1E1E', lightBg: '#FAF9F6', textDark: '#1E1E1E', builtIn: true },
+      { id: 'cyberark', name: 'CyberArk (Electric Cobalt)', font: "'Plus Jakarta Sans', sans-serif", primary: '#0066CC', accent: '#00B4D8', darkBg: '#00122A', lightBg: '#F3F6FA', textDark: '#071529', builtIn: true },
+      { id: 'paloalto', name: 'Palo Alto Networks (Cyber Orange)', font: "'Plus Jakarta Sans', sans-serif", primary: '#FA582D', accent: '#00C0F3', darkBg: '#0F141C', lightBg: '#F4F6F8', textDark: '#12161F', builtIn: true }
+    ];
+
+    function loadCustomThemes() {
+      try {
+        const stored = localStorage.getItem('deck_custom_themes');
+        return stored ? JSON.parse(stored) : [];
+      } catch(e) { return []; }
+    }
+
+    function saveCustomThemes(themesList) {
+      localStorage.setItem('deck_custom_themes', JSON.stringify(themesList));
+    }
+
+    function getAllThemes() {
+      return [...defaultThemes, ...loadCustomThemes()];
+    }
+
+    function injectCustomThemesCSS() {
+      let styleTag = document.getElementById('dynamic-custom-themes-style');
+      if (!styleTag) {
+        styleTag = document.createElement('style');
+        styleTag.id = 'dynamic-custom-themes-style';
+        document.head.appendChild(styleTag);
+      }
+      const customThemes = loadCustomThemes();
+      let css = '';
+      customThemes.forEach(t => {
+        css += `
+        [data-theme="${t.id}"] {
+          --font-main: ${t.font};
+          --bg-dark: ${t.darkBg};
+          --bg-dark-card: #131E36;
+          --bg-light: ${t.lightBg};
+          --bg-white: #FFFFFF;
+          --text-dark: ${t.textDark};
+          --text-muted: #5A6A80;
+          --text-light: #FFFFFF;
+          --text-light-muted: #94A3B8;
+          --primary: ${t.primary};
+          --primary-light: ${t.primary}18;
+          --accent: ${t.accent};
+          --success: #10B981;
+          --danger: #EF4444;
+          --border-light: #DCE5F2;
+          --border-dark: #1E293B;
+        }
+        `;
+      });
+      styleTag.textContent = css;
+    }
+
+    const adminModal = document.getElementById('admin-modal');
+    const adminBtn = document.getElementById('adminBtn');
+    const closeAdminBtn = document.getElementById('closeAdminBtn');
+    const closeAdminFooterBtn = document.getElementById('closeAdminFooterBtn');
+    const adminThemeSelect = document.getElementById('adminThemeSelect');
+    const launchDeckBtn = document.getElementById('launchDeckBtn');
+    const resetFormBtn = document.getElementById('resetFormBtn');
+    const themeIdInput = document.getElementById('themeIdInput');
+    const themeNameInput = document.getElementById('themeNameInput');
+    const themeFontSelect = document.getElementById('themeFontSelect');
+    const saveThemeBtn = document.getElementById('saveThemeBtn');
+    const copyCssBtn = document.getElementById('copyCssBtn');
+    const deleteThemeBtn = document.getElementById('deleteThemeBtn');
+    const adminStatusMsg = document.getElementById('adminStatusMsg');
+    const hideControlsCheck = document.getElementById('hideControlsCheck');
+
+    const colorFields = [
+      { picker: document.getElementById('primaryPicker'), text: document.getElementById('primaryText') },
+      { picker: document.getElementById('accentPicker'), text: document.getElementById('accentText') },
+      { picker: document.getElementById('darkBgPicker'), text: document.getElementById('darkBgText') },
+      { picker: document.getElementById('lightBgPicker'), text: document.getElementById('lightBgText') },
+      { picker: document.getElementById('textDarkPicker'), text: document.getElementById('textDarkText') }
+    ];
+
+    colorFields.forEach(f => {
+      f.picker.addEventListener('input', () => { f.text.value = f.picker.value.toUpperCase(); });
+      f.text.addEventListener('input', () => {
+        if (/^#[0-9A-Fa-f]{6}$/.test(f.text.value)) f.picker.value = f.text.value;
+      });
+    });
+
+    function toggleAdmin(force) {
+      const isActive = adminModal.classList.contains('active');
+      const shouldOpen = force !== undefined ? force : !isActive;
+      if (shouldOpen) {
+        populateAdminSelect();
+        adminModal.classList.add('active');
+      } else {
+        adminModal.classList.remove('active');
+      }
+    }
+
+    function populateAdminSelect() {
+      adminThemeSelect.innerHTML = '';
+      const customThemes = loadCustomThemes();
+      const currentTheme = document.body.getAttribute('data-theme') || 'ttpsc';
+
+      const defGroup = document.createElement('optgroup');
+      defGroup.label = 'Motywy Systemowe & Domyślne';
+      defaultThemes.forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t.id;
+        opt.textContent = t.name;
+        if (t.id === currentTheme) opt.selected = true;
+        defGroup.appendChild(opt);
+      });
+      adminThemeSelect.appendChild(defGroup);
+
+      if (customThemes.length > 0) {
+        const custGroup = document.createElement('optgroup');
+        custGroup.label = 'Motywy Klientów (Własne)';
+        customThemes.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t.id;
+          opt.textContent = `${t.name} (${t.id})`;
+          if (t.id === currentTheme) opt.selected = true;
+          custGroup.appendChild(opt);
+        });
+        adminThemeSelect.appendChild(custGroup);
+      }
+    }
+
+    function applyTheme(themeId) {
+      document.body.setAttribute('data-theme', themeId);
+      const all = getAllThemes();
+      themeIdx = all.findIndex(t => t.id === themeId);
+      if (themeIdx === -1) themeIdx = 0;
+    }
+
+    adminThemeSelect.addEventListener('change', () => {
+      const themeId = adminThemeSelect.value;
+      applyTheme(themeId);
+      const customThemes = loadCustomThemes();
+      const found = customThemes.find(t => t.id === themeId);
+      if (found) {
+        fillFormWithTheme(found);
+        deleteThemeBtn.style.display = 'inline-block';
+      } else {
+        const builtIn = defaultThemes.find(t => t.id === themeId);
+        if (builtIn) fillFormWithTheme(builtIn);
+        deleteThemeBtn.style.display = 'none';
+      }
+    });
+
+    function fillFormWithTheme(t) {
+      themeIdInput.value = t.id;
+      themeNameInput.value = t.name || '';
+      themeFontSelect.value = t.font || "'Inter', sans-serif";
+      colorFields[0].picker.value = t.primary; colorFields[0].text.value = t.primary.toUpperCase();
+      colorFields[1].picker.value = t.accent; colorFields[1].text.value = t.accent.toUpperCase();
+      colorFields[2].picker.value = t.darkBg; colorFields[2].text.value = t.darkBg.toUpperCase();
+      colorFields[3].picker.value = t.lightBg; colorFields[3].text.value = t.lightBg.toUpperCase();
+      colorFields[4].picker.value = t.textDark; colorFields[4].text.value = t.textDark.toUpperCase();
+    }
+
+    resetFormBtn.addEventListener('click', () => {
+      themeIdInput.value = '';
+      themeNameInput.value = '';
+      themeFontSelect.value = "'Montserrat', sans-serif";
+      colorFields[0].picker.value = '#7B2D85'; colorFields[0].text.value = '#7B2D85';
+      colorFields[1].picker.value = '#D03A8C'; colorFields[1].text.value = '#D03A8C';
+      colorFields[2].picker.value = '#2B0D30'; colorFields[2].text.value = '#2B0D30';
+      colorFields[3].picker.value = '#FBF7FB'; colorFields[3].text.value = '#FBF7FB';
+      colorFields[4].picker.value = '#1F1F1F'; colorFields[4].text.value = '#1F1F1F';
+      deleteThemeBtn.style.display = 'none';
+      themeIdInput.focus();
+    });
+
+    saveThemeBtn.addEventListener('click', () => {
+      const slug = themeIdInput.value.trim().toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+      const name = themeNameInput.value.trim() || slug;
+      if (!slug) {
+        showStatus('Podaj identyfikator klienta (slug)!', false);
+        return;
+      }
+      const newTheme = {
+        id: slug,
+        name: name,
+        font: themeFontSelect.value,
+        primary: colorFields[0].text.value,
+        accent: colorFields[1].text.value,
+        darkBg: colorFields[2].text.value,
+        lightBg: colorFields[3].text.value,
+        textDark: colorFields[4].text.value,
+        builtIn: false
+      };
+
+      let customThemes = loadCustomThemes();
+      const existingIdx = customThemes.findIndex(t => t.id === slug);
+      if (existingIdx >= 0) customThemes[existingIdx] = newTheme;
+      else customThemes.push(newTheme);
+
+      saveCustomThemes(customThemes);
+      injectCustomThemesCSS();
+      populateAdminSelect();
+      adminThemeSelect.value = slug;
+      applyTheme(slug);
+      deleteThemeBtn.style.display = 'inline-block';
+      showStatus(`Motyw klienta "${name}" został zapisany i aktywowany!`, true);
+    });
+
+    deleteThemeBtn.addEventListener('click', () => {
+      const slug = themeIdInput.value.trim().toLowerCase();
+      let customThemes = loadCustomThemes().filter(t => t.id !== slug);
+      saveCustomThemes(customThemes);
+      injectCustomThemesCSS();
+      populateAdminSelect();
+      applyTheme('ttpsc');
+      resetFormBtn.click();
+      showStatus(`Motyw "${slug}" został usunięty.`, true);
+    });
+
+    copyCssBtn.addEventListener('click', () => {
+      const slug = themeIdInput.value.trim().toLowerCase() || 'nowy-klient';
+      const font = themeFontSelect.value;
+      const pri = colorFields[0].text.value;
+      const acc = colorFields[1].text.value;
+      const dbg = colorFields[2].text.value;
+      const lbg = colorFields[3].text.value;
+      const txt = colorFields[4].text.value;
+
+      const css = `[data-theme="${slug}"] {
+  --font-main: ${font};
+  --bg-dark: ${dbg};
+  --bg-dark-card: #131E36;
+  --bg-light: ${lbg};
+  --bg-white: #FFFFFF;
+  --text-dark: ${txt};
+  --text-muted: #5A6A80;
+  --text-light: #FFFFFF;
+  --text-light-muted: #94A3B8;
+  --primary: ${pri};
+  --primary-light: ${pri}18;
+  --accent: ${acc};
+  --success: #10B981;
+  --danger: #EF4444;
+  --border-light: #DCE5F2;
+  --border-dark: #1E293B;
+}`;
+      navigator.clipboard.writeText(css).then(() => {
+        showStatus('Kod CSS skopiowany do schowka!', true);
+      }).catch(() => {
+        showStatus('Nie udało się skopiować automatycznie. Zaznacz ręcznie.', false);
+      });
+    });
+
+    function showStatus(text, isSuccess) {
+      adminStatusMsg.textContent = text;
+      adminStatusMsg.className = `admin-status-msg ${isSuccess ? 'admin-status-success' : ''}`;
+      adminStatusMsg.style.display = 'block';
+      setTimeout(() => { adminStatusMsg.style.display = 'none'; }, 4000);
+    }
+
+    launchDeckBtn.addEventListener('click', () => {
+      const chosenTheme = adminThemeSelect.value;
+      applyTheme(chosenTheme);
+      goToSlide(0);
+      toggleAdmin(false);
+
+      if (hideControlsCheck.checked) document.body.classList.add('hide-controls');
+      else document.body.classList.remove('hide-controls');
+
+      toggleFullScreen();
+    });
+
+    adminBtn.addEventListener('click', () => toggleAdmin(true));
+    closeAdminBtn.addEventListener('click', () => toggleAdmin(false));
+    closeAdminFooterBtn.addEventListener('click', () => toggleAdmin(false));
+
+    function initGrid() {
+      gridDeck.innerHTML = '';
+      slides.forEach((s, idx) => {
+        const thumb = document.createElement('div');
+        thumb.className = `grid-thumb ${idx === currentIndex ? 'active' : ''}`;
+        thumb.innerHTML = `
+          <div>
+            <div class="grid-thumb-num">Slajd ${idx + 1}</div>
+            <div class="grid-thumb-title">${s.dataset.title || 'Slajd ' + (idx + 1)}</div>
+          </div>
+          <div class="grid-thumb-type">${s.dataset.type || ''}</div>
+        `;
+        thumb.addEventListener('click', () => {
+          goToSlide(idx);
+          toggleGrid(false);
+        });
+        gridDeck.appendChild(thumb);
+      });
+    }
+
+    function toggleGrid(force) {
+      const isActive = gridOverlay.classList.contains('active');
+      const shouldOpen = force !== undefined ? force : !isActive;
+      if (shouldOpen) {
+        initGrid();
+        gridOverlay.classList.add('active');
+      } else {
+        gridOverlay.classList.remove('active');
+      }
+    }
+
+    function updateDeck() {
+      if (slides.length === 0) return;
+      slides.forEach((s, idx) => {
+        const isActive = idx === currentIndex;
+        s.classList.toggle('active', isActive);
+        if (!isActive) {
+          s.querySelectorAll('.fragment').forEach(f => f.classList.remove('visible'));
+        }
+      });
+      counter.textContent = `${currentIndex + 1} / ${slides.length}`;
+      const progressPercent = ((currentIndex + 1) / slides.length) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+    }
+
+    function getCurrentFragments() {
+      if (slides.length === 0) return [];
+      const activeSlide = slides[currentIndex];
+      return Array.from(activeSlide.querySelectorAll('.fragment'));
+    }
+
+    function goNext() {
+      const frags = getCurrentFragments();
+      const invisibleFrag = frags.find(f => !f.classList.contains('visible'));
+      if (invisibleFrag) {
+        invisibleFrag.classList.add('visible');
+        return;
+      }
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        updateDeck();
+      }
+    }
+
+    function goPrev() {
+      const frags = getCurrentFragments();
+      const visibleFrags = frags.filter(f => f.classList.contains('visible'));
+      if (visibleFrags.length > 0) {
+        visibleFrags[visibleFrags.length - 1].classList.remove('visible');
+        return;
+      }
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateDeck();
+        const prevFrags = getCurrentFragments();
+        prevFrags.forEach(f => f.classList.add('visible'));
+      }
+    }
+
+    function goToSlide(index) {
+      if (index >= 0 && index < slides.length) {
+        currentIndex = index;
+        updateDeck();
+      }
+    }
+
+    function toggleThemeQuick() {
+      const all = getAllThemes();
+      themeIdx = (themeIdx + 1) % all.length;
+      applyTheme(all[themeIdx].id);
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.altKey && (e.key === 'a' || e.key === 'A')) {
+        e.preventDefault();
+        toggleAdmin();
+        return;
+      }
+
+      if (adminModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          toggleAdmin(false);
+        }
+        return;
+      }
+
+      if (gridOverlay.classList.contains('active')) {
+        if (e.key === 'Escape' || e.key === 'g' || e.key === 'G') {
+          e.preventDefault();
+          toggleGrid(false);
+        }
+        return;
+      }
+
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') {
+        return;
+      }
+
+      switch(e.key) {
+        case 'ArrowRight':
+        case 'PageDown':
+        case ' ':
+          e.preventDefault();
+          goNext();
+          break;
+        case 'ArrowLeft':
+        case 'PageUp':
+          e.preventDefault();
+          goPrev();
+          break;
+        case 'Home':
+          e.preventDefault();
+          goToSlide(0);
+          break;
+        case 'End':
+          e.preventDefault();
+          goToSlide(slides.length - 1);
+          break;
+        case 'g':
+        case 'G':
+          e.preventDefault();
+          toggleGrid(true);
+          break;
+        case 'f':
+        case 'F':
+          e.preventDefault();
+          toggleFullScreen();
+          break;
+        case 't':
+        case 'T':
+          e.preventDefault();
+          toggleThemeQuick();
+          break;
+        case 'h':
+        case 'H':
+          e.preventDefault();
+          document.body.classList.toggle('hide-controls');
+          break;
+      }
+    });
+
+    nextBtn.addEventListener('click', goNext);
+    prevBtn.addEventListener('click', goPrev);
+    fsBtn.addEventListener('click', toggleFullScreen);
+    gridBtn.addEventListener('click', () => toggleGrid());
+    themeBtn.addEventListener('click', toggleThemeQuick);
+    closeGridBtn.addEventListener('click', () => toggleGrid(false));
+
+    function fitSlides() {
+      const scaleX = window.innerWidth / 1280;
+      const scaleY = window.innerHeight / 720;
+      const scale = Math.min(scaleX, scaleY) * 0.95;
+      slides.forEach(s => {
+        s.style.transform = `scale(${scale})`;
+      });
+    }
+
+    window.addEventListener('resize', fitSlides);
+    injectCustomThemesCSS();
+    fitSlides();
+    updateDeck();
+  </script>
+</body>
+</html>

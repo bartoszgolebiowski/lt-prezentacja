@@ -1,0 +1,60 @@
+<!-- ==========================================================
+     LAYOUT 02: SPLIT SCREEN Z WEKTOROWĄ STRZAŁKĄ TRANSFORMACJI
+     Zastosowanie: Kontrast (Problem vs Rozwiązanie, Przed vs Po, As-Is vs To-Be).
+     LLM TIP: Centralna strzałka SVG symbolizuje wektor zmiany i przejścia.
+     ========================================================== -->
+<div class="slide-container" data-title="Zestawienie Kontrastowe" data-type="Split Screen">
+  <header class="slide-header">
+    <span class="slide-kicker">ANALIZA KONTRASTOWA // AS-IS VS TO-BE</span>
+    <h2 class="slide-title">Stan Obecny (Wąskie Gardło) vs Model Docelowy</h2>
+  </header>
+
+  <div class="slide-body">
+    <div style="display: grid; grid-template-columns: 1fr 60px 1fr; gap: 20px; align-items: center; height: 100%;">
+
+      <!-- KOLUMNA LEWA: WYZWANIE / STAN OBECNY -->
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 32px; height: 100%; display: flex; flex-direction: column;">
+        <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--danger); align-self: flex-start; margin-bottom: 16px;">
+          Stan Obecny (As-Is)
+        </span>
+        <h3 style="font-size: 24px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Manualna Weryfikacja</h3>
+        <ul class="bullet-list">
+          <li><strong>Czas cyklu:</strong> 42 minuty na pojedynczy audyt.</li>
+          <li><strong>Ryzyko pomyłek:</strong> 18% wskaźnik rewizji dokumentów.</li>
+          <li><strong>Koszty skali:</strong> Wymóg zatrudnienia kolejnych 8 osób.</li>
+        </ul>
+      </div>
+
+      <!-- CENTRALNA STRZAŁKA TRANSFORMACJI SVG -->
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <svg viewBox="0 0 60 120" style="width: 50px; height: 100px;">
+          <defs>
+            <marker id="splitArrowHead" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto">
+              <polygon points="0 2, 8 5, 0 8" fill="var(--primary)" />
+            </marker>
+          </defs>
+          <path d="M 10 60 L 46 60" stroke="var(--primary)" stroke-width="4" stroke-linecap="round" marker-end="url(#splitArrowHead)" />
+        </svg>
+      </div>
+
+      <!-- KOLUMNA PRAWA: STAN DOCELOWY -->
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 32px; height: 100%; display: flex; flex-direction: column;">
+        <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--success); align-self: flex-start; margin-bottom: 16px;">
+          Model Docelowy (To-Be)
+        </span>
+        <h3 style="font-size: 24px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Orkiestracja Agenta AI</h3>
+        <ul class="bullet-list">
+          <li><strong>Czas cyklu:</strong> Poniżej 30 sekund w trybie 24/7.</li>
+          <li><strong>Bezawaryjność:</strong> 99.4% bezbłędnej walidacji reguł.</li>
+          <li><strong>Efektywność:</strong> 65% redukcji bezpośrednich kosztów.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>PREZENTACJA BIZNESOWA</span>
+    <span>Slajd X</span>
+  </div>
+</div>

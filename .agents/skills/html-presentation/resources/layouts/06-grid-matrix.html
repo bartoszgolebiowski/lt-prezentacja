@@ -1,0 +1,76 @@
+<!-- ==========================================================
+     LAYOUT 06: SIATKA 2x2 Z WEKTOROWYMI OSIAMI WSPÓŁRZĘDNYCH SVG
+     Zastosowanie: Macierz priorytetów (Wpływ vs Nakład), SWOT, klasyfikacja 4 ćwiartek.
+     LLM TIP: Osie współrzędnych X i Y wygenerowane są jako wektor SVG ze strzałkami kierunkowymi.
+     ========================================================== -->
+<div class="slide-container" data-title="Macierz Priorytetów" data-type="Siatka 2x2">
+  <header class="slide-header">
+    <span class="slide-kicker">MACIERZ DECYZYJNA // IMPACT VS EFFORT</span>
+    <h2 class="slide-title">Klasyfikacja Inicjatyw według Wpływu i Kosztu</h2>
+  </header>
+
+  <div class="slide-body" style="position: relative;">
+
+    <!-- TŁO OSI WSPÓŁRZĘDNYCH SVG ZE STRZAŁKAMI KIERUNKOWYMI -->
+    <svg viewBox="0 0 1152 460" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+      <defs>
+        <marker id="matrixArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <polygon points="0 1, 8 4, 0 7" fill="#64748B" />
+        </marker>
+      </defs>
+      <!-- Oś pionowa Y (Wpływ Biznesowy) -->
+      <line x1="576" y1="440" x2="576" y2="10" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="576" y1="60" x2="576" y2="10" stroke="#64748B" stroke-width="3" marker-end="url(#matrixArrow)" />
+      <!-- Oś pozioma X (Nakład / Koszt) -->
+      <line x1="20" y1="230" x2="1132" y2="230" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="1080" y1="230" x2="1140" y2="230" stroke="#64748B" stroke-width="3" marker-end="url(#matrixArrow)" />
+    </svg>
+
+    <!-- ETYKIETY OSI W HTML -->
+    <div style="position: absolute; top: -10px; left: 586px; font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; z-index: 2;">
+      ▲ WYSOKI WPŁYW
+    </div>
+    <div style="position: absolute; bottom: 8px; right: 10px; font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; z-index: 2;">
+      WYSOKI NAKŁAD ▶
+    </div>
+
+    <!-- 4 ĆWIARTKI (HTML GRID) -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 24px; height: 100%; position: relative; z-index: 2;">
+
+      <!-- ĆWIARTKA 1: QUICK WINS -->
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 10px; padding: 22px 26px;">
+        <span style="font-size: 11px; font-weight: 700; color: var(--success); text-transform: uppercase; display: block; margin-bottom: 6px;">Szybkie Wygrane (Quick Wins)</span>
+        <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 6px;">Szablony Prezentacji HTML</h4>
+        <p style="font-size: 14px; color: #475569;"><strong>Wskaźnik:</strong> Niski nakład | Natychmiastowa standaryzacja jakości.</p>
+      </div>
+
+      <!-- ĆWIARTKA 2: STRATEGIC -->
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 10px; padding: 22px 26px;">
+        <span style="font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; display: block; margin-bottom: 6px;">Inicjatywy Strategiczne</span>
+        <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 6px;">Centralna Orkiestracja Agenta</h4>
+        <p style="font-size: 14px; color: #475569;"><strong>Wskaźnik:</strong> Wysoki nakład | Kluczowa przewaga rynkowa.</p>
+      </div>
+
+      <!-- ĆWIARTKA 3: LOW PRIORITY -->
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 10px; padding: 22px 26px;">
+        <span style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; display: block; margin-bottom: 6px;">Niski Priorytet</span>
+        <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 6px;">Manualne Retusze Slajdów</h4>
+        <p style="font-size: 14px; color: #475569;"><strong>Wskaźnik:</strong> Drobne usprawnienia o znikomym efekcie skali.</p>
+      </div>
+
+      <!-- ĆWIARTKA 4: TRAPS -->
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 10px; padding: 22px 26px;">
+        <span style="font-size: 11px; font-weight: 700; color: var(--danger); text-transform: uppercase; display: block; margin-bottom: 6px;">Pułapki Zasobowe</span>
+        <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 6px;">Trenowanie Własnego Modelu LLM</h4>
+        <p style="font-size: 14px; color: #475569;"><strong>Wskaźnik:</strong> Ekstremalny koszt i wysokie ryzyko dezaktualizacji.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="slide-footer">
+    <span>PREZENTACJA BIZNESOWA</span>
+    <span>Slajd X</span>
+  </div>
+</div>

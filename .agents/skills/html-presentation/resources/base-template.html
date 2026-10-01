@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prezentacja Biznesowa</title>
+  <!-- Google Fonts: Inter, Plus Jakarta Sans, DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;600;700;800;900&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================
+       RESET & ROOT VARIABLES
+       ========================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Motyw Domyślny: Transition Technologies PSC */
+    :root, [data-theme="ttpsc"] {
+      --font-main: 'Montserrat', Arial, sans-serif;
+      --font-fallback: 'Avenir Next LT Pro', Arial, sans-serif;
+
+      /* Kolory tła */
+      --bg-dark: #2B0D30;           /* Ciemna purpura bazowa dla wariantu dark */
+      --bg-dark-card: #3D1344;
+      --bg-light: #FBF7FB;          /* Rozbielony odcień bazowany na Klasycznym Wrzosie */
+      --bg-white: #FFFFFF;
+
+      /* Typografia / Teksty */
+      --text-dark: #1F1F1F;
+      --text-muted: #6B7280;
+      --text-light: #FFFFFF;
+      --text-light-muted: #D9D9D9;  /* Strategiczna Szarość */
+
+      /* Główne kolory marki TTPSC */
+      --primary: #7B2D85;           /* Kreatywna Purpura */
+      --primary-light: #ECD3ED;     /* Klasyczny Wrzos */
+      --accent: #D03A8C;            /* Płaski Róż */
+      --accent-light: #FBE6F1;
+
+      /* Kolory funkcyjne / Akcentowe */
+      --success: #64B237;           /* Nowoczesna Zieleń */
+      --success-light: #EFF8EB;
+      --danger: #E11D48;
+      --danger-light: #FFF1F2;
+      --warning: #F59E0B;
+      --warning-light: #FEF3C7;
+
+      /* Obramowania i linie */
+      --border-light: #D9D9D9;      /* Strategiczna Szarość */
+      --border-dark: #4A1A52;
+
+      /* Dodatkowe gradienty marki */
+      --primary-gradient: linear-gradient(135deg, #7B2D85 0%, #D03A8C 100%);
+    }
+
+    /* Motyw: PwC */
+    [data-theme="pwc"] {
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-dark: #1E1E1E;
+      --bg-dark-card: #2B2B2B;
+      --bg-light: #FAF9F6;
+      --bg-white: #FFFFFF;
+      --text-dark: #1E1E1E;
+      --text-muted: #666666;
+      --text-light: #FFFFFF;
+      --text-light-muted: #B3B3B3;
+      --primary: #D04A02;
+      --primary-light: #FFF3EB;
+      --accent: #EB8C00;
+      --accent-light: #FEF7ED;
+      --success: #107C41;
+      --success-light: #F0FDF4;
+      --danger: #E0301E;
+      --danger-light: #FFF1F2;
+      --warning: #FFB600;
+      --warning-light: #FEF9C3;
+      --border-light: #E5E0D8;
+      --border-dark: #333333;
+    }
+
+    /* Motyw: CyberArk */
+    [data-theme="cyberark"] {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-dark: #00122A;
+      --bg-dark-card: #081E3D;
+      --bg-light: #F3F6FA;
+      --bg-white: #FFFFFF;
+      --text-dark: #071529;
+      --text-muted: #51627B;
+      --text-light: #FFFFFF;
+      --text-light-muted: #8EA3BF;
+      --primary: #0066CC;
+      --primary-light: #EDF5FF;
+      --accent: #00B4D8;
+      --accent-light: #E6F8FB;
+      --success: #059669;
+      --success-light: #ECFDF5;
+      --danger: #E4002B;
+      --danger-light: #FFF1F2;
+      --warning: #D97706;
+      --warning-light: #FEF3C7;
+      --border-light: #D6E0EC;
+      --border-dark: #0C2B54;
+    }
+
+    /* Motyw: Palo Alto Networks */
+    [data-theme="paloalto"] {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-dark: #0F141C;
+      --bg-dark-card: #181F2C;
+      --bg-light: #F4F6F8;
+      --bg-white: #FFFFFF;
+      --text-dark: #12161F;
+      --text-muted: #556275;
+      --text-light: #FFFFFF;
+      --text-light-muted: #9BA7B7;
+      --primary: #FA582D;
+      --primary-light: #FFF0EB;
+      --accent: #00C0F3;
+      --accent-light: #E6F9FE;
+      --success: #10B981;
+      --success-light: #ECFDF5;
+      --danger: #E11D48;
+      --danger-light: #FFF1F2;
+      --warning: #F59E0B;
+      --warning-light: #FEF3C7;
+      --border-light: #DCE1E7;
+      --border-dark: #222B3D;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: #05070B;
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* PROGRESS BAR */
+    #deck-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      background: var(--primary);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+    }
+
+    /* VIEWPORT KONTENER SLAJDU */
+    #deck-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Ścisłe wymiary canvasu: 1280px x 720px */
+    .slide-container {
+      width: 1280px;
+      height: 720px;
+      min-width: 1280px;
+      min-height: 720px;
+      max-width: 1280px;
+      max-height: 720px;
+      padding: 48px 64px;
+      box-sizing: border-box;
+      display: none;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-light);
+      border-radius: 4px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      transform-origin: center center;
+      transition: opacity 0.2s ease;
+    }
+
+    .slide-container.active {
+      display: flex;
+    }
+
+    .slide-dark {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+    .slide-white {
+      background: var(--bg-white);
+    }
+
+    /* Krokowe odsłanianie */
+    .fragment {
+      opacity: 0.15;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .fragment.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Typografia nagłówków */
+    .slide-header {
+      margin-bottom: 28px;
+      flex-shrink: 0;
+    }
+    .slide-kicker {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .slide-dark .slide-kicker {
+      color: #38BDF8;
+    }
+    .slide-title {
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text-dark);
+    }
+    .slide-dark .slide-title {
+      color: #FFFFFF;
+    }
+
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 0;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .bullet-list li {
+      font-size: 20px;
+      line-height: 1.5;
+      color: #334155;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .bullet-list li::before {
+      content: "—";
+      color: var(--primary);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .slide-dark .slide-footer {
+      border-top-color: var(--border-dark);
+      color: var(--text-light-muted);
+    }
+
+    /* Pasek nawigacji */
+    #controls {
+      position: fixed;
+      bottom: 16px;
+      display: flex;
+      gap: 10px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(10px);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      z-index: 100;
+      align-items: center;
+      color: #FFFFFF;
+      font-size: 13px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    #controls button {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-size: 15px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      transition: background 0.15s ease;
+    }
+    #controls button:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    /* Grid Overlay */
+    #grid-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 7, 11, 0.94);
+      backdrop-filter: blur(14px);
+      z-index: 2000;
+      display: none;
+      flex-direction: column;
+      padding: 32px 48px;
+      overflow-y: auto;
+    }
+    #grid-overlay.active { display: flex; }
+    .grid-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      color: #FFFFFF;
+    }
+    .grid-header h3 { font-size: 20px; font-weight: 700; }
+    .grid-close-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #FFF;
+      font-size: 18px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .grid-deck {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .grid-thumb {
+      background: #141B2D;
+      border: 2px solid #1E293B;
+      border-radius: 8px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 160px;
+      color: #FFFFFF;
+    }
+    .grid-thumb:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .grid-thumb.active { border-color: var(--primary); background: #1E293B; }
+    .grid-thumb-num { font-size: 12px; font-weight: 700; color: var(--primary); }
+    .grid-thumb-title { font-size: 14px; font-weight: 600; line-height: 1.3; margin-top: 6px; color: #F8FAFC; }
+    .grid-thumb-type { font-size: 11px; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Admin Backdrop & Dialog */
+    .admin-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .admin-backdrop.active { display: flex; }
+    .admin-dialog {
+      background: #0B1120;
+      border: 1px solid #1E293B;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 740px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      color: #F8FAFC;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid #1E293B;
+    }
+    .admin-badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #38BDF8;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .admin-header h2 { font-size: 19px; font-weight: 700; margin: 0; color: #FFFFFF; }
+    .admin-btn-icon {
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: #94A3B8;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .admin-btn-icon:hover { background: rgba(255,255,255,0.18); color: #FFFFFF; }
+    .admin-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .admin-section {
+      background: #131E36;
+      border: 1px solid #1E293B;
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .admin-section h3 { font-size: 15px; font-weight: 700; color: #FFFFFF; margin-bottom: 6px; }
+    .admin-hint { font-size: 13px; color: #94A3B8; margin-bottom: 14px; line-height: 1.4; }
+    .admin-row { display: flex; gap: 12px; align-items: center; }
+    .admin-select, .admin-input {
+      background: #0B1120;
+      border: 1px solid #334155;
+      color: #FFFFFF;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      flex: 1;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .admin-select:focus, .admin-input:focus { border-color: #38BDF8; }
+    .admin-btn-primary {
+      background: #2563EB;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+    .admin-btn-primary:hover { background: #1D4ED8; }
+    .admin-btn-success {
+      background: #16A34A;
+      color: #FFFFFF;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .admin-btn-success:hover { background: #15803D; }
+    .admin-btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: #E2E8F0;
+      border: 1px solid #334155;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .admin-btn-secondary:hover { background: rgba(255,255,255,0.15); }
+    .admin-btn-danger {
+      background: #DC2626;
+      color: #FFFFFF;
+      border: none;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .admin-btn-sm { padding: 4px 10px; font-size: 12px; }
+    .admin-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .admin-grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+    .admin-field label { display: block; font-size: 12px; font-weight: 600; color: #94A3B8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .admin-colors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .admin-color-item label { display: block; font-size: 11px; font-weight: 600; color: #94A3B8; margin-bottom: 6px; }
+    .admin-color-picker-box { display: flex; align-items: center; background: #0B1120; border: 1px solid #334155; border-radius: 8px; padding: 4px 6px; gap: 6px; }
+    .admin-color-picker-box input[type="color"] { border: none; background: none; width: 26px; height: 26px; cursor: pointer; border-radius: 4px; padding: 0; }
+    .admin-input-color { background: none; border: none; color: #FFFFFF; font-family: monospace; font-size: 12px; width: 65px; outline: none; }
+    .admin-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .admin-status-msg { margin-top: 10px; font-size: 13px; padding: 8px 12px; border-radius: 6px; display: none; }
+    .admin-status-success { display: block; background: rgba(22, 163, 74, 0.2); border: 1px solid #16A34A; color: #86EFAC; }
+    .admin-checkbox-label { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #CBD5E1; cursor: pointer; }
+    .admin-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-top: 1px solid #1E293B;
+      background: #080D1A;
+      border-radius: 0 0 16px 16px;
+    }
+    body.hide-controls #controls { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    body.hide-controls:hover #controls { opacity: 1; pointer-events: auto; }
+
+    /* REGUŁY DRUKU / PDF */
+    @media print {
+      @page { size: 1280px 720px; margin: 0; }
+      body { background: transparent !important; overflow: visible !important; }
+      #controls, #deck-progress, #grid-overlay, #admin-modal { display: none !important; }
+      #deck-wrapper { display: block !important; width: auto !important; height: auto !important; }
+      .slide-container {
+        display: flex !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        transform: none !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+      }
+      .fragment { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body data-theme="ttpsc">
+
+  <div id="deck-progress"></div>
+
+  <div id="deck-wrapper">
+    <!-- TUTAJ AGENT WKLEJA POSZCZEGÓLNE SLAJDY Z RESOURCES/LAYOUTS/ -->
+  </div>
+
+  <!-- WIDOK SIATKI MINIATUR -->
+  <div id="grid-overlay">
+    <div class="grid-header">
+      <h3>Przegląd Slajdów (Grid View)</h3>
+      <button class="grid-close-btn" id="closeGridBtn">✕ Zamknij (Esc / G)</button>
+    </div>
+    <div class="grid-deck" id="gridDeck"></div>
+  </div>
+
+  <!-- PANEL ADMINISTRATORA -->
+  <div id="admin-modal" class="admin-backdrop">
+    <div class="admin-dialog">
+      <div class="admin-header">
+        <div class="admin-title-box">
+          <span class="admin-badge">TRYB ADMINISTRATORA</span>
+          <h2>Konfiguracja Motywów i Klientów</h2>
+        </div>
+        <button id="closeAdminBtn" class="admin-btn-icon" title="Zamknij (Alt+A / Esc)">✕</button>
+      </div>
+
+      <div class="admin-body">
+        <div class="admin-section">
+          <h3>1. Wybierz Motyw dla Prezentacji</h3>
+          <p class="admin-hint">Wybierz gotowy profil klienta lub motyw systemowy przed rozpoczęciem spotkania.</p>
+          <div class="admin-row">
+            <select id="adminThemeSelect" class="admin-select"></select>
+            <button id="launchDeckBtn" class="admin-btn-primary">▶ Odpal Czystą Prezentację</button>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <div class="admin-section-header">
+            <h3>2. Kreator Nowego Motywu Klienta</h3>
+            <button id="resetFormBtn" class="admin-btn-secondary admin-btn-sm">+ Nowy Klient</button>
+          </div>
+          <div class="admin-grid-form">
+            <div class="admin-field">
+              <label>ID Klienta (slug)</label>
+              <input type="text" id="themeIdInput" placeholder="np. volvo, allegro, pko" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label>Pełna Nazwa Klienta</label>
+              <input type="text" id="themeNameInput" placeholder="np. Volvo Group Poland" class="admin-input">
+            </div>
+          </div>
+          <div class="admin-field" style="margin-bottom: 16px;">
+            <label>Font Prezentacji</label>
+            <select id="themeFontSelect" class="admin-select">
+              <option value="'Inter', sans-serif">Inter (Standard McKinsey / Corporate)</option>
+              <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans (Tech / AI / SaaS)</option>
+              <option value="'DM Sans', sans-serif">DM Sans (Warm Editorial / Finanse)</option>
+              <option value="'Roboto', sans-serif">Roboto</option>
+              <option value="'Montserrat', sans-serif">Montserrat</option>
+            </select>
+          </div>
+
+          <div class="admin-colors-grid">
+            <div class="admin-color-item">
+              <label>Primary (Kolor Marki)</label>
+              <div class="admin-color-picker-box">
+                <input type="color" id="primaryPicker" value="#7B2D85">
+                <input type="text" id="primaryText" value="#7B2D85" class="admin-input-color">
+              </div>
+            </div>
+            <div class="admin-color-item">
+              <label>Accent (Drugi Wektor)</label>
+              <div class="admin-color-picker-box">
+                <input type="color" id="accentPicker" value="#D03A8C">
+                <input type="text" id="accentText" value="#D03A8C" class="admin-input-color">
+              </div>
+            </div>
+            <div class="admin-color-item">
+              <label>Dark BG (Tytuł & Finał)</label>
+              <div class="admin-color-picker-box">
+                <input type="color" id="darkBgPicker" value="#2B0D30">
+                <input type="text" id="darkBgText" value="#2B0D30" class="admin-input-color">
+              </div>
+            </div>
+            <div class="admin-color-item">
+              <label>Light BG (Meritum)</label>
+              <div class="admin-color-picker-box">
+                <input type="color" id="lightBgPicker" value="#FBF7FB">
+                <input type="text" id="lightBgText" value="#FBF7FB" class="admin-input-color">
+              </div>
+            </div>
+            <div class="admin-color-item">
+              <label>Text Dark (Treść)</label>
+              <div class="admin-color-picker-box">
+                <input type="color" id="textDarkPicker" value="#1F1F1F">
+                <input type="text" id="textDarkText" value="#1F1F1F" class="admin-input-color">
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-actions">
+            <button id="saveThemeBtn" class="admin-btn-success">💾 Zapisz i Aktywuj Motyw</button>
+            <button id="copyCssBtn" class="admin-btn-secondary">📋 Kopiuj Kod CSS</button>
+            <button id="deleteThemeBtn" class="admin-btn-danger" style="display:none;">🗑 Usuń Motyw</button>
+          </div>
+          <div id="adminStatusMsg" class="admin-status-msg"></div>
+        </div>
+
+        <div class="admin-section">
+          <h3>3. Tryb Dyskrecji Przed Klientem</h3>
+          <label class="admin-checkbox-label">
+            <input type="checkbox" id="hideControlsCheck">
+            Ukryj pływający pasek kontrolek (klient widzi wyłącznie czysty slajd, sterowanie strzałkami)
+          </label>
+        </div>
+      </div>
+
+      <div class="admin-footer">
+        <span class="admin-hint" style="margin-bottom:0;">Skrót wywołania panelu: <strong>Alt + A</strong> (niewidoczny dla klienta)</span>
+        <button id="closeAdminFooterBtn" class="admin-btn-secondary">Gotowe / Zamknij</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KONTROLKI NAWIGACJI -->
+  <div id="controls">
+    <button id="prevBtn" title="Wstecz (← / PageUp)">◀</button>
+    <span id="counter">1 / 1</span>
+    <button id="nextBtn" title="Dalej (Spacja / → / PageDown)">▶</button>
+    <button id="gridBtn" title="Widok siatki kafelków (G / Esc)">☷</button>
+    <button id="themeBtn" title="Szybka zmiana motywu">◑</button>
+    <button id="fsBtn" title="Tryb pełnoekranowy (F)">⛶</button>
+    <button id="adminBtn" title="Panel Administratora (Alt+A)">⚙</button>
+  </div>
+
+  <script>
+    /* ==========================================================
+       LOGIKA NAWIGACJI, FRAGMENTÓW I PANELU ADMINA
+       ========================================================== */
+    const slides = Array.from(document.querySelectorAll('.slide-container'));
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const fsBtn = document.getElementById('fsBtn');
+    const gridBtn = document.getElementById('gridBtn');
+    const themeBtn = document.getElementById('themeBtn');
+    const counter = document.getElementById('counter');
+    const progressBar = document.getElementById('deck-progress');
+    const gridOverlay = document.getElementById('grid-overlay');
+    const gridDeck = document.getElementById('gridDeck');
+    const closeGridBtn = document.getElementById('closeGridBtn');
+
+    let currentIndex = 0;
+    let themeIdx = 0;
+
+    const defaultThemes = [
+      { id: 'ttpsc', name: 'TT PSC (Kreatywna Purpura - Domyślny)', font: "'Montserrat', sans-serif", primary: '#7B2D85', accent: '#D03A8C', darkBg: '#2B0D30', lightBg: '#FBF7FB', textDark: '#1F1F1F', builtIn: true },
+      { id: 'pwc', name: 'PwC (Signature Orange)', font: "'Inter', sans-serif", primary: '#D04A02', accent: '#EB8C00', darkBg: '#1E1E1E', lightBg: '#FAF9F6', textDark: '#1E1E1E', builtIn: true },
+      { id: 'cyberark', name: 'CyberArk (Electric Cobalt)', font: "'Plus Jakarta Sans', sans-serif", primary: '#0066CC', accent: '#00B4D8', darkBg: '#00122A', lightBg: '#F3F6FA', textDark: '#071529', builtIn: true },
+      { id: 'paloalto', name: 'Palo Alto Networks (Cyber Orange)', font: "'Plus Jakarta Sans', sans-serif", primary: '#FA582D', accent: '#00C0F3', darkBg: '#0F141C', lightBg: '#F4F6F8', textDark: '#12161F', builtIn: true }
+    ];
+
+    function loadCustomThemes() {
+      try {
+        const stored = localStorage.getItem('deck_custom_themes');
+        return stored ? JSON.parse(stored) : [];
+      } catch(e) { return []; }
+    }
+
+    function saveCustomThemes(themesList) {
+      localStorage.setItem('deck_custom_themes', JSON.stringify(themesList));
+    }
+
+    function getAllThemes() {
+      return [...defaultThemes, ...loadCustomThemes()];
+    }
+
+    function injectCustomThemesCSS() {
+      let styleTag = document.getElementById('dynamic-custom-themes-style');
+      if (!styleTag) {
+        styleTag = document.createElement('style');
+        styleTag.id = 'dynamic-custom-themes-style';
+        document.head.appendChild(styleTag);
+      }
+      const customThemes = loadCustomThemes();
+      let css = '';
+      customThemes.forEach(t => {
+        css += `
+        [data-theme="${t.id}"] {
+          --font-main: ${t.font};
+          --bg-dark: ${t.darkBg};
+          --bg-dark-card: #131E36;
+          --bg-light: ${t.lightBg};
+          --bg-white: #FFFFFF;
+          --text-dark: ${t.textDark};
+          --text-muted: #5A6A80;
+          --text-light: #FFFFFF;
+          --text-light-muted: #94A3B8;
+          --primary: ${t.primary};
+          --primary-light: ${t.primary}18;
+          --accent: ${t.accent};
+          --success: #10B981;
+          --danger: #EF4444;
+          --border-light: #DCE5F2;
+          --border-dark: #1E293B;
+        }
+        `;
+      });
+      styleTag.textContent = css;
+    }
+
+    const adminModal = document.getElementById('admin-modal');
+    const adminBtn = document.getElementById('adminBtn');
+    const closeAdminBtn = document.getElementById('closeAdminBtn');
+    const closeAdminFooterBtn = document.getElementById('closeAdminFooterBtn');
+    const adminThemeSelect = document.getElementById('adminThemeSelect');
+    const launchDeckBtn = document.getElementById('launchDeckBtn');
+    const resetFormBtn = document.getElementById('resetFormBtn');
+    const themeIdInput = document.getElementById('themeIdInput');
+    const themeNameInput = document.getElementById('themeNameInput');
+    const themeFontSelect = document.getElementById('themeFontSelect');
+    const saveThemeBtn = document.getElementById('saveThemeBtn');
+    const copyCssBtn = document.getElementById('copyCssBtn');
+    const deleteThemeBtn = document.getElementById('deleteThemeBtn');
+    const adminStatusMsg = document.getElementById('adminStatusMsg');
+    const hideControlsCheck = document.getElementById('hideControlsCheck');
+
+    const colorFields = [
+      { picker: document.getElementById('primaryPicker'), text: document.getElementById('primaryText') },
+      { picker: document.getElementById('accentPicker'), text: document.getElementById('accentText') },
+      { picker: document.getElementById('darkBgPicker'), text: document.getElementById('darkBgText') },
+      { picker: document.getElementById('lightBgPicker'), text: document.getElementById('lightBgText') },
+      { picker: document.getElementById('textDarkPicker'), text: document.getElementById('textDarkText') }
+    ];
+
+    colorFields.forEach(f => {
+      f.picker.addEventListener('input', () => { f.text.value = f.picker.value.toUpperCase(); });
+      f.text.addEventListener('input', () => {
+        if (/^#[0-9A-Fa-f]{6}$/.test(f.text.value)) f.picker.value = f.text.value;
+      });
+    });
+
+    function toggleAdmin(force) {
+      const isActive = adminModal.classList.contains('active');
+      const shouldOpen = force !== undefined ? force : !isActive;
+      if (shouldOpen) {
+        populateAdminSelect();
+        adminModal.classList.add('active');
+      } else {
+        adminModal.classList.remove('active');
+      }
+    }
+
+    function populateAdminSelect() {
+      adminThemeSelect.innerHTML = '';
+      const customThemes = loadCustomThemes();
+      const currentTheme = document.body.getAttribute('data-theme') || 'ttpsc';
+
+      const defGroup = document.createElement('optgroup');
+      defGroup.label = 'Motywy Systemowe & Domyślne';
+      defaultThemes.forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t.id;
+        opt.textContent = t.name;
+        if (t.id === currentTheme) opt.selected = true;
+        defGroup.appendChild(opt);
+      });
+      adminThemeSelect.appendChild(defGroup);
+
+      if (customThemes.length > 0) {
+        const custGroup = document.createElement('optgroup');
+        custGroup.label = 'Motywy Klientów (Własne)';
+        customThemes.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t.id;
+          opt.textContent = `${t.name} (${t.id})`;
+          if (t.id === currentTheme) opt.selected = true;
+          custGroup.appendChild(opt);
+        });
+        adminThemeSelect.appendChild(custGroup);
+      }
+    }
+
+    function applyTheme(themeId) {
+      document.body.setAttribute('data-theme', themeId);
+      const all = getAllThemes();
+      themeIdx = all.findIndex(t => t.id === themeId);
+      if (themeIdx === -1) themeIdx = 0;
+    }
+
+    adminThemeSelect.addEventListener('change', () => {
+      const themeId = adminThemeSelect.value;
+      applyTheme(themeId);
+      const customThemes = loadCustomThemes();
+      const found = customThemes.find(t => t.id === themeId);
+      if (found) {
+        fillFormWithTheme(found);
+        deleteThemeBtn.style.display = 'inline-block';
+      } else {
+        const builtIn = defaultThemes.find(t => t.id === themeId);
+        if (builtIn) fillFormWithTheme(builtIn);
+        deleteThemeBtn.style.display = 'none';
+      }
+    });
+
+    function fillFormWithTheme(t) {
+      themeIdInput.value = t.id;
+      themeNameInput.value = t.name || '';
+      themeFontSelect.value = t.font || "'Inter', sans-serif";
+      colorFields[0].picker.value = t.primary; colorFields[0].text.value = t.primary.toUpperCase();
+      colorFields[1].picker.value = t.accent; colorFields[1].text.value = t.accent.toUpperCase();
+      colorFields[2].picker.value = t.darkBg; colorFields[2].text.value = t.darkBg.toUpperCase();
+      colorFields[3].picker.value = t.lightBg; colorFields[3].text.value = t.lightBg.toUpperCase();
+      colorFields[4].picker.value = t.textDark; colorFields[4].text.value = t.textDark.toUpperCase();
+    }
+
+    resetFormBtn.addEventListener('click', () => {
+      themeIdInput.value = '';
+      themeNameInput.value = '';
+      themeFontSelect.value = "'Montserrat', sans-serif";
+      colorFields[0].picker.value = '#7B2D85'; colorFields[0].text.value = '#7B2D85';
+      colorFields[1].picker.value = '#D03A8C'; colorFields[1].text.value = '#D03A8C';
+      colorFields[2].picker.value = '#2B0D30'; colorFields[2].text.value = '#2B0D30';
+      colorFields[3].picker.value = '#FBF7FB'; colorFields[3].text.value = '#FBF7FB';
+      colorFields[4].picker.value = '#1F1F1F'; colorFields[4].text.value = '#1F1F1F';
+      deleteThemeBtn.style.display = 'none';
+      themeIdInput.focus();
+    });
+
+    saveThemeBtn.addEventListener('click', () => {
+      const slug = themeIdInput.value.trim().toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+      const name = themeNameInput.value.trim() || slug;
+      if (!slug) {
+        showStatus('Podaj identyfikator klienta (slug)!', false);
+        return;
+      }
+      const newTheme = {
+        id: slug,
+        name: name,
+        font: themeFontSelect.value,
+        primary: colorFields[0].text.value,
+        accent: colorFields[1].text.value,
+        darkBg: colorFields[2].text.value,
+        lightBg: colorFields[3].text.value,
+        textDark: colorFields[4].text.value,
+        builtIn: false
+      };
+
+      let customThemes = loadCustomThemes();
+      const existingIdx = customThemes.findIndex(t => t.id === slug);
+      if (existingIdx >= 0) customThemes[existingIdx] = newTheme;
+      else customThemes.push(newTheme);
+
+      saveCustomThemes(customThemes);
+      injectCustomThemesCSS();
+      populateAdminSelect();
+      adminThemeSelect.value = slug;
+      applyTheme(slug);
+      deleteThemeBtn.style.display = 'inline-block';
+      showStatus(`Motyw klienta "${name}" został zapisany i aktywowany!`, true);
+    });
+
+    deleteThemeBtn.addEventListener('click', () => {
+      const slug = themeIdInput.value.trim().toLowerCase();
+      let customThemes = loadCustomThemes().filter(t => t.id !== slug);
+      saveCustomThemes(customThemes);
+      injectCustomThemesCSS();
+      populateAdminSelect();
+      applyTheme('ttpsc');
+      resetFormBtn.click();
+      showStatus(`Motyw "${slug}" został usunięty.`, true);
+    });
+
+    copyCssBtn.addEventListener('click', () => {
+      const slug = themeIdInput.value.trim().toLowerCase() || 'nowy-klient';
+      const font = themeFontSelect.value;
+      const pri = colorFields[0].text.value;
+      const acc = colorFields[1].text.value;
+      const dbg = colorFields[2].text.value;
+      const lbg = colorFields[3].text.value;
+      const txt = colorFields[4].text.value;
+
+      const css = `[data-theme="${slug}"] {
+  --font-main: ${font};
+  --bg-dark: ${dbg};
+  --bg-dark-card: #131E36;
+  --bg-light: ${lbg};
+  --bg-white: #FFFFFF;
+  --text-dark: ${txt};
+  --text-muted: #5A6A80;
+  --text-light: #FFFFFF;
+  --text-light-muted: #94A3B8;
+  --primary: ${pri};
+  --primary-light: ${pri}18;
+  --accent: ${acc};
+  --success: #10B981;
+  --danger: #EF4444;
+  --border-light: #DCE5F2;
+  --border-dark: #1E293B;
+}`;
+      navigator.clipboard.writeText(css).then(() => {
+        showStatus('Kod CSS skopiowany do schowka!', true);
+      }).catch(() => {
+        showStatus('Nie udało się skopiować automatycznie. Zaznacz ręcznie.', false);
+      });
+    });
+
+    function showStatus(text, isSuccess) {
+      adminStatusMsg.textContent = text;
+      adminStatusMsg.className = `admin-status-msg ${isSuccess ? 'admin-status-success' : ''}`;
+      adminStatusMsg.style.display = 'block';
+      setTimeout(() => { adminStatusMsg.style.display = 'none'; }, 4000);
+    }
+
+    launchDeckBtn.addEventListener('click', () => {
+      const chosenTheme = adminThemeSelect.value;
+      applyTheme(chosenTheme);
+      goToSlide(0);
+      toggleAdmin(false);
+
+      if (hideControlsCheck.checked) document.body.classList.add('hide-controls');
+      else document.body.classList.remove('hide-controls');
+
+      toggleFullScreen();
+    });
+
+    adminBtn.addEventListener('click', () => toggleAdmin(true));
+    closeAdminBtn.addEventListener('click', () => toggleAdmin(false));
+    closeAdminFooterBtn.addEventListener('click', () => toggleAdmin(false));
+
+    function initGrid() {
+      gridDeck.innerHTML = '';
+      slides.forEach((s, idx) => {
+        const thumb = document.createElement('div');
+        thumb.className = `grid-thumb ${idx === currentIndex ? 'active' : ''}`;
+        thumb.innerHTML = `
+          <div>
+            <div class="grid-thumb-num">Slajd ${idx + 1}</div>
+            <div class="grid-thumb-title">${s.dataset.title || 'Slajd ' + (idx + 1)}</div>
+          </div>
+          <div class="grid-thumb-type">${s.dataset.type || ''}</div>
+        `;
+        thumb.addEventListener('click', () => {
+          goToSlide(idx);
+          toggleGrid(false);
+        });
+        gridDeck.appendChild(thumb);
+      });
+    }
+
+    function toggleGrid(force) {
+      const isActive = gridOverlay.classList.contains('active');
+      const shouldOpen = force !== undefined ? force : !isActive;
+      if (shouldOpen) {
+        initGrid();
+        gridOverlay.classList.add('active');
+      } else {
+        gridOverlay.classList.remove('active');
+      }
+    }
+
+    function updateDeck() {
+      if (slides.length === 0) return;
+      slides.forEach((s, idx) => {
+        const isActive = idx === currentIndex;
+        s.classList.toggle('active', isActive);
+        if (!isActive) {
+          s.querySelectorAll('.fragment').forEach(f => f.classList.remove('visible'));
+        }
+      });
+      counter.textContent = `${currentIndex + 1} / ${slides.length}`;
+      const progressPercent = ((currentIndex + 1) / slides.length) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+    }
+
+    function getCurrentFragments() {
+      if (slides.length === 0) return [];
+      const activeSlide = slides[currentIndex];
+      return Array.from(activeSlide.querySelectorAll('.fragment'));
+    }
+
+    function goNext() {
+      const frags = getCurrentFragments();
+      const invisibleFrag = frags.find(f => !f.classList.contains('visible'));
+      if (invisibleFrag) {
+        invisibleFrag.classList.add('visible');
+        return;
+      }
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        updateDeck();
+      }
+    }
+
+    function goPrev() {
+      const frags = getCurrentFragments();
+      const visibleFrags = frags.filter(f => f.classList.contains('visible'));
+      if (visibleFrags.length > 0) {
+        visibleFrags[visibleFrags.length - 1].classList.remove('visible');
+        return;
+      }
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateDeck();
+        const prevFrags = getCurrentFragments();
+        prevFrags.forEach(f => f.classList.add('visible'));
+      }
+    }
+
+    function goToSlide(index) {
+      if (index >= 0 && index < slides.length) {
+        currentIndex = index;
+        updateDeck();
+      }
+    }
+
+    function toggleThemeQuick() {
+      const all = getAllThemes();
+      themeIdx = (themeIdx + 1) % all.length;
+      applyTheme(all[themeIdx].id);
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.altKey && (e.key === 'a' || e.key === 'A')) {
+        e.preventDefault();
+        toggleAdmin();
+        return;
+      }
+
+      if (adminModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          toggleAdmin(false);
+        }
+        return;
+      }
+
+      if (gridOverlay.classList.contains('active')) {
+        if (e.key === 'Escape' || e.key === 'g' || e.key === 'G') {
+          e.preventDefault();
+          toggleGrid(false);
+        }
+        return;
+      }
+
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') {
+        return;
+      }
+
+      switch(e.key) {
+        case 'ArrowRight':
+        case 'PageDown':
+        case ' ':
+          e.preventDefault();
+          goNext();
+          break;
+        case 'ArrowLeft':
+        case 'PageUp':
+          e.preventDefault();
+          goPrev();
+          break;
+        case 'Home':
+          e.preventDefault();
+          goToSlide(0);
+          break;
+        case 'End':
+          e.preventDefault();
+          goToSlide(slides.length - 1);
+          break;
+        case 'g':
+        case 'G':
+          e.preventDefault();
+          toggleGrid(true);
+          break;
+        case 'f':
+        case 'F':
+          e.preventDefault();
+          toggleFullScreen();
+          break;
+        case 't':
+        case 'T':
+          e.preventDefault();
+          toggleThemeQuick();
+          break;
+        case 'h':
+        case 'H':
+          e.preventDefault();
+          document.body.classList.toggle('hide-controls');
+          break;
+      }
+    });
+
+    nextBtn.addEventListener('click', goNext);
+    prevBtn.addEventListener('click', goPrev);
+    fsBtn.addEventListener('click', toggleFullScreen);
+    gridBtn.addEventListener('click', () => toggleGrid());
+    themeBtn.addEventListener('click', toggleThemeQuick);
+    closeGridBtn.addEventListener('click', () => toggleGrid(false));
+
+    function fitSlides() {
+      const scaleX = window.innerWidth / 1280;
+      const scaleY = window.innerHeight / 720;
+      const scale = Math.min(scaleX, scaleY) * 0.95;
+      slides.forEach(s => {
+        s.style.transform = `scale(${scale})`;
+      });
+    }
+
+    window.addEventListener('resize', fitSlides);
+    injectCustomThemesCSS();
+    fitSlides();
+    updateDeck();
+  </script>
+</body>
+</html>

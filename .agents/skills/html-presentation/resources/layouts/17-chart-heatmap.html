@@ -1,0 +1,88 @@
+<!-- ==========================================================
+     LAYOUT 17: MAPA CIEPŁA (HEATMAP) PRODUKT x OKRES
+     Zastosowanie: Sezonowość, wzorce w czasie, porównanie wielu pozycji naraz (8–12 wierszy).
+     LLM TIP: Komórka = udział okresu w sumie wiersza (%). Natężenie --m = udział * 1,9 (max 100).
+              Wiersze grupuj według wzorca; etykieta grupy tylko przy pierwszym wierszu grupy.
+              Jeden kolor (--primary) w różnych natężeniach. Komórki >= 55% dostają klasę .hi (biały tekst).
+     ========================================================== -->
+<div class="slide-container" data-title="Pięć rytmów sprzedaży wyznacza zapasy" data-type="Heatmap">
+  <style>
+    .hm-row { display: grid; grid-template-columns: 230px repeat(4, 1fr) 190px; gap: 4px; align-items: center; height: 35px; }
+    .hm-row.g { margin-top: 10px; }
+    .hm-name { font-size: 16px; color: var(--text-dark); }
+    .hm-c { height: 35px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; border-radius: 4px; background: color-mix(in srgb, var(--primary) var(--m), #FFFFFF); color: var(--text-dark); }
+    .hm-c.hi { color: #FFFFFF; }
+    .hm-tag { font-size: 14px; font-weight: 700; color: var(--primary); padding-left: 12px; }
+    .hm-head { font-size: 14px; font-weight: 700; color: var(--text-muted); text-align: center; }
+  </style>
+  <header class="slide-header">
+    <span class="slide-kicker">SEZONOWOŚĆ // UDZIAŁ KWARTAŁU W ROCZNYM PRZYCHODZIE PRODUKTU</span>
+    <h2 class="slide-title">Pięć rytmów sprzedaży wyznacza zapasy</h2>
+  </header>
+
+  <div class="slide-body">
+    <div class="hm-row" style="height: 24px;">
+      <div></div><div class="hm-head">Q1</div><div class="hm-head">Q2</div><div class="hm-head">Q3</div><div class="hm-head">Q4</div><div></div>
+    </div>
+
+    <div class="hm-row">
+      <div class="hm-name">Klimatyzator EcoCool</div>
+      <div class="hm-c" style="--m:6%">3%</div><div class="hm-c hi" style="--m:82%">43%</div><div class="hm-c hi" style="--m:99%">52%</div><div class="hm-c" style="--m:4%">2%</div>
+      <div class="hm-tag">Lato</div>
+    </div>
+    <div class="hm-row">
+      <div class="hm-name">Kamera Smart WiFi</div>
+      <div class="hm-c" style="--m:36%">19%</div><div class="hm-c" style="--m:51%">27%</div><div class="hm-c hi" style="--m:57%">30%</div><div class="hm-c" style="--m:46%">24%</div>
+      <div></div>
+    </div>
+
+    <div class="hm-row g fragment">
+      <div class="hm-name">Oczyszczacz PureAir Max</div>
+      <div class="hm-c hi" style="--m:71%">37%</div><div class="hm-c" style="--m:15%">8%</div><div class="hm-c" style="--m:21%">11%</div><div class="hm-c hi" style="--m:83%">44%</div>
+      <div class="hm-tag">Zima</div>
+    </div>
+
+    <div class="hm-row g fragment">
+      <div class="hm-name">Słuchawki ANC Pro</div>
+      <div class="hm-c" style="--m:32%">17%</div><div class="hm-c" style="--m:36%">19%</div><div class="hm-c" style="--m:42%">22%</div><div class="hm-c hi" style="--m:80%">42%</div>
+      <div class="hm-tag">Pik w Q4</div>
+    </div>
+    <div class="hm-row fragment">
+      <div class="hm-name">Klawiatura RGB</div>
+      <div class="hm-c" style="--m:38%">20%</div><div class="hm-c" style="--m:35%">19%</div><div class="hm-c" style="--m:45%">24%</div><div class="hm-c hi" style="--m:73%">38%</div>
+      <div></div>
+    </div>
+    <div class="hm-row fragment">
+      <div class="hm-name">Tablet Graficzny Creator 12</div>
+      <div class="hm-c" style="--m:31%">17%</div><div class="hm-c" style="--m:33%">17%</div><div class="hm-c" style="--m:48%">25%</div><div class="hm-c hi" style="--m:78%">41%</div>
+      <div></div>
+    </div>
+    <div class="hm-row fragment">
+      <div class="hm-name">Smartwatch ActiveFit 3</div>
+      <div class="hm-c" style="--m:28%">15%</div><div class="hm-c" style="--m:39%">21%</div><div class="hm-c" style="--m:51%">27%</div><div class="hm-c hi" style="--m:72%">38%</div>
+      <div></div>
+    </div>
+
+    <div class="hm-row g fragment">
+      <div class="hm-name">Monitor Ergonomiczny 4K</div>
+      <div class="hm-c" style="--m:47%">25%</div><div class="hm-c" style="--m:48%">25%</div><div class="hm-c" style="--m:46%">24%</div><div class="hm-c" style="--m:49%">26%</div>
+      <div class="hm-tag">Stabilnie</div>
+    </div>
+    <div class="hm-row fragment">
+      <div class="hm-name">Stacja Dokująca USB-C</div>
+      <div class="hm-c" style="--m:43%">23%</div><div class="hm-c" style="--m:45%">24%</div><div class="hm-c" style="--m:47%">25%</div><div class="hm-c hi" style="--m:55%">29%</div>
+      <div></div>
+    </div>
+
+    <div class="hm-row g fragment">
+      <div class="hm-name">Laptop Ultrabook Pro 15</div>
+      <div class="hm-c hi" style="--m:57%">30%</div><div class="hm-c" style="--m:51%">27%</div><div class="hm-c" style="--m:44%">23%</div><div class="hm-c" style="--m:38%">20%</div>
+      <div class="hm-tag" style="color: var(--danger);">Spadek</div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>PREZENTACJA BIZNESOWA</span>
+    <span>Slajd X</span>
+  </div>
+</div>

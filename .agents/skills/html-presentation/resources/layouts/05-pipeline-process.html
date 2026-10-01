@@ -1,0 +1,73 @@
+<!-- ==========================================================
+     LAYOUT 05: PIPELINE / PROCES POZIOMY ZE STRZAŁKAMI ETAPÓW
+     Zastosowanie: Harmonogram wdrożenia, roadmapa lub etapy cyklu życia.
+     LLM TIP: Poziome linie i groty strzałek w SVG tworzą dynamiczną oś procesu.
+     ========================================================== -->
+<div class="slide-container" data-title="Plan Wdrożenia Procesu" data-type="Pipeline">
+  <header class="slide-header">
+    <span class="slide-kicker">HARMONOGRAM OPERACYJNY // ROADMAPA</span>
+    <h2 class="slide-title">Cztery Fazy Wdrożenia Silnika na Produkcję</h2>
+  </header>
+
+  <div class="slide-body" style="justify-content: center;">
+
+    <!-- PASEK PROCESU SVG ZE STRZAŁKAMI -->
+    <div style="position: relative; width: 100%; margin-bottom: 24px;">
+      <svg viewBox="0 0 1152 40" style="width: 100%; height: 40px;">
+        <defs>
+          <marker id="pipelineArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <polygon points="0 1, 8 4, 0 7" fill="var(--primary)" />
+          </marker>
+        </defs>
+        <!-- Główna linia postępu ze strzałką na końcu -->
+        <line x1="20" y1="20" x2="1140" y2="20" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round" />
+        <line x1="20" y1="20" x2="600" y2="20" stroke="var(--primary)" stroke-width="4" stroke-linecap="round" marker-end="url(#pipelineArrow)" />
+        
+        <!-- Węzły etapów na linii -->
+        <circle cx="140" cy="20" r="10" fill="var(--primary)" />
+        <circle cx="430" cy="20" r="10" fill="var(--primary)" />
+        <circle cx="720" cy="20" r="10" fill="#94A3B8" />
+        <circle cx="1010" cy="20" r="10" fill="#94A3B8" />
+      </svg>
+    </div>
+
+    <!-- KARTY KROKÓW W SIATCE 4-KOLUMNOWEJ -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px 20px;">
+        <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--primary); display: block; margin-bottom: 8px;">Faza 1</span>
+        <h4 style="font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Audyt & MVP</h4>
+        <p style="font-size: 14px; color: #475569; margin-bottom: 6px;"><strong>Czas:</strong> 2 tygodnie</p>
+        <p style="font-size: 14px; color: #475569;"><strong>Cel:</strong> Identyfikacja wąskich gardeł</p>
+      </div>
+
+      <div class="fragment" style="background: var(--bg-white); border: 1.5px solid var(--primary); border-radius: 12px; padding: 24px 20px; ">
+        <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--primary); display: block; margin-bottom: 8px;">Faza 2</span>
+        <h4 style="font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Architektura Agenta</h4>
+        <p style="font-size: 14px; color: #475569; margin-bottom: 6px;"><strong>Czas:</strong> 4 tygodnie</p>
+        <p style="font-size: 14px; color: #475569;"><strong>Cel:</strong> Prompty i orkiestracja LLM</p>
+      </div>
+
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px 20px;">
+        <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #64748B; display: block; margin-bottom: 8px;">Faza 3</span>
+        <h4 style="font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Testy Red Teaming</h4>
+        <p style="font-size: 14px; color: #475569; margin-bottom: 6px;"><strong>Czas:</strong> 2 tygodnie</p>
+        <p style="font-size: 14px; color: #475569;"><strong>Cel:</strong> Walidacja bezpieczeństwa</p>
+      </div>
+
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 24px 20px;">
+        <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #64748B; display: block; margin-bottom: 8px;">Faza 4</span>
+        <h4 style="font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Pełny Rollout</h4>
+        <p style="font-size: 14px; color: #475569; margin-bottom: 6px;"><strong>Czas:</strong> Ciągły</p>
+        <p style="font-size: 14px; color: #475569;"><strong>Cel:</strong> 100% procesów produkcyjnych</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="slide-footer">
+    <span>PREZENTACJA BIZNESOWA</span>
+    <span>Slajd X</span>
+  </div>
+</div>

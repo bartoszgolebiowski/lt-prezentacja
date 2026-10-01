@@ -1,0 +1,61 @@
+<!-- ==========================================================
+     LAYOUT 09: LEJEK PRZYCZYNOWO-SKUTKOWY (5 WHYS / ROOT CAUSE FUNNEL)
+     Zastosowanie: Dochodzenie od powierzchownych symptomów do sedna awarii.
+     LLM TIP: Zwężające się pasy HTML oraz pionowa strzałka SVG w dół ilustrują penetrację problemu.
+     ========================================================== -->
+<div class="slide-container" data-title="Dochodzenie do Przyczyny (5 Whys)" data-type="Lejek 5 Whys">
+  <header class="slide-header">
+    <span class="slide-kicker">ANALIZA GŁĘBOKOŚCIOWA // METODA 5 WHYS</span>
+    <h2 class="slide-title">Od Objawu Biznesowego do Przyczyny Źródłowej</h2>
+  </header>
+
+  <div class="slide-body" style="position: relative; align-items: center; justify-content: center;">
+
+    <!-- PIONOWA STRZAŁKA W DÓŁ W TLE (SVG) -->
+    <svg viewBox="0 0 100 380" style="position: absolute; width: 60px; height: 380px; z-index: 1; pointer-events: none;">
+      <defs>
+        <marker id="funnelDownArrow" markerWidth="10" markerHeight="10" refX="5" refY="7" orient="auto">
+          <polygon points="0 0, 10 0, 5 8" fill="var(--danger)" />
+        </marker>
+      </defs>
+      <line x1="50" y1="20" x2="50" y2="350" stroke="#CBD5E1" stroke-width="3" stroke-dasharray="6 6" />
+      <line x1="50" y1="260" x2="50" y2="360" stroke="var(--danger)" stroke-width="4" marker-end="url(#funnelDownArrow)" />
+    </svg>
+
+    <!-- KASKADA POZIOMÓW (LEJEK W CZYSTYM HTML) -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; max-width: 820px; z-index: 2;">
+
+      <!-- POZIOM 1: OBJAW (SZEROKI) -->
+      <div class="fragment" style="width: 100%; background: #F8FAFC; border: 1px solid var(--border-light); padding: 12px 24px; border-radius: 8px; font-size: 15px;">
+        <strong>1. Objaw Powierzchowny:</strong> Prezentacje dla zarządu są odrzucane z powodu nieczytelności.
+      </div>
+
+      <!-- POZIOM 2: DLACZEGO? -->
+      <div class="fragment" style="width: 86%; background: #F1F5F9; border: 1px solid #CBD5E1; padding: 12px 24px; border-radius: 8px; font-size: 15px;">
+        <strong>2. Dlaczego?</strong> Slajdy przeładowane są ścianami wielokrotnie złożonego tekstu.
+      </div>
+
+      <!-- POZIOM 3: DLACZEGO? -->
+      <div class="fragment" style="width: 72%; background: #E2E8F0; border: 1px solid #94A3B8; padding: 12px 24px; border-radius: 8px; font-size: 15px;">
+        <strong>3. Dlaczego?</strong> Twórcy kopiują fragmenty technicznej dokumentacji 1:1.
+      </div>
+
+      <!-- POZIOM 4: DLACZEGO? -->
+      <div class="fragment" style="width: 58%; background: #CBD5E1; padding: 12px 20px; border-radius: 8px; font-size: 14px;">
+        <strong>4. Dlaczego?</strong> Brak sztywnych wytycznych syntezy (rygor 20–35 słów).
+      </div>
+
+      <!-- POZIOM 5: ROOT CAUSE (SEDNO PROBLEMU) -->
+      <div class="fragment" style="width: 46%; background: var(--danger); color: #FFFFFF; font-weight: 700; padding: 14px 20px; border-radius: 8px; text-align: center; font-size: 15px; ">
+        SEDNO: Brak standaryzacji skilla i architektury informacji.
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="slide-footer">
+    <span>PREZENTACJA BIZNESOWA</span>
+    <span>Slajd X</span>
+  </div>
+</div>

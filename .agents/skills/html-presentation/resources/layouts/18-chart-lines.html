@@ -1,0 +1,79 @@
+<!-- ==========================================================
+     LAYOUT 18: WYKRES LINIOWY Z ETYKIETAMI BEZPOŚREDNIMI + KOLUMNA ZMIAN
+     Zastosowanie: 2–3 serie w czasie, punkt przecięcia ("X wyprzedził Y"), zmiana między początkiem a końcem.
+     LLM TIP: y(v) = y0 - v * (y0 - ytop) / max. Tu y0=340, ytop=20, max=600 => y = 340 - 0,5333 * v.
+              x(i) = 50 + i * 220. Etykiety serii BEZPOŚREDNIO przy końcu linii (bez legendy), HTML absolute.
+              Osie i podziałka: linie w SVG, liczby w HTML (Text-Free SVG).
+              Kolumna po prawej: delta koniec - początek dla każdej serii.
+     ========================================================== -->
+<div class="slide-container" data-title="Smartwatch wyprzedził laptopa w Q4" data-type="Wykres liniowy">
+  <header class="slide-header">
+    <span class="slide-kicker">PRZYCHÓD KWARTALNY // TYS. PLN</span>
+    <h2 class="slide-title">Smartwatch wyprzedził laptopa w Q4</h2>
+  </header>
+
+  <div class="slide-body" style="flex-direction: row; gap: 40px; align-items: center;">
+
+    <!-- WYKRES 860 x 380 -->
+    <div style="position: relative; width: 860px; height: 380px; flex-shrink: 0;">
+      <svg viewBox="0 0 860 380" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+        <line x1="50" y1="340" x2="730" y2="340" stroke="#CBD5E1" stroke-width="2" />
+        <line x1="50" y1="233.3" x2="730" y2="233.3" stroke="#E2E8F0" stroke-width="1.5" />
+        <line x1="50" y1="126.7" x2="730" y2="126.7" stroke="#E2E8F0" stroke-width="1.5" />
+        <line x1="50" y1="20" x2="730" y2="20" stroke="#E2E8F0" stroke-width="1.5" />
+
+        <!-- Słuchawki (neutralna) -->
+        <polyline points="50,272.8 270,265.6 490,253.6 710,174.4" fill="none" stroke="#64748B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+        <g fill="#64748B"><circle cx="50" cy="272.8" r="5" /><circle cx="270" cy="265.6" r="5" /><circle cx="490" cy="253.6" r="5" /><circle cx="710" cy="174.4" r="5" /></g>
+
+        <!-- Laptop (spadek) -->
+        <polyline points="50,26.4 270,60 490,93.6 710,127.2" fill="none" stroke="var(--danger)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+        <g fill="var(--danger)"><circle cx="50" cy="26.4" r="6" /><circle cx="270" cy="60" r="6" /><circle cx="490" cy="93.6" r="6" /><circle cx="710" cy="127.2" r="6" /></g>
+
+        <!-- Smartwatch (wniosek) -->
+        <polyline points="50,229.1 270,184 490,138.9 710,55.7" fill="none" stroke="var(--primary)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+        <g fill="var(--primary)"><circle cx="50" cy="229.1" r="7" /><circle cx="270" cy="184" r="7" /><circle cx="490" cy="138.9" r="7" /><circle cx="710" cy="55.7" r="7" /></g>
+      </svg>
+
+      <!-- Podziałka osi Y -->
+      <div style="position: absolute; left: 0; width: 40px; top: 10px; text-align: right; font-size: 14px; color: var(--text-muted);">600</div>
+      <div style="position: absolute; left: 0; width: 40px; top: 116.7px; text-align: right; font-size: 14px; color: var(--text-muted);">400</div>
+      <div style="position: absolute; left: 0; width: 40px; top: 223.3px; text-align: right; font-size: 14px; color: var(--text-muted);">200</div>
+      <div style="position: absolute; left: 0; width: 40px; top: 330px; text-align: right; font-size: 14px; color: var(--text-muted);">0</div>
+
+      <!-- Oś X -->
+      <div style="position: absolute; top: 350px; left: 30px; width: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q1</div>
+      <div style="position: absolute; top: 350px; left: 250px; width: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q2</div>
+      <div style="position: absolute; top: 350px; left: 470px; width: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q3</div>
+      <div style="position: absolute; top: 350px; left: 690px; width: 40px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-muted);">Q4</div>
+
+      <!-- Etykiety bezpośrednie przy końcach linii -->
+      <div style="position: absolute; left: 728px; top: 44px; white-space: nowrap; font-size: 16px; font-weight: 800; color: var(--primary);">Smartwatch 533</div>
+      <div style="position: absolute; left: 728px; top: 116px; white-space: nowrap; font-size: 16px; font-weight: 800; color: var(--danger);">Laptop 399</div>
+      <div style="position: absolute; left: 728px; top: 164px; white-space: nowrap; font-size: 16px; font-weight: 700; color: #64748B;">Słuchawki 311</div>
+    </div>
+
+    <!-- KOLUMNA ZMIAN Q4 vs Q1 -->
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 28px;">
+      <div style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);">Zmiana Q4 vs Q1</div>
+      <div class="fragment">
+        <div style="font-size: 40px; font-weight: 800; color: var(--primary); line-height: 1;">+325 tys.</div>
+        <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">Smartwatch</div>
+      </div>
+      <div class="fragment">
+        <div style="font-size: 40px; font-weight: 800; color: #64748B; line-height: 1;">+185 tys.</div>
+        <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">Słuchawki</div>
+      </div>
+      <div class="fragment">
+        <div style="font-size: 40px; font-weight: 800; color: var(--danger); line-height: 1;">-189 tys.</div>
+        <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">Laptop</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slide-footer">
+    <span>PREZENTACJA BIZNESOWA</span>
+    <span>Slajd X</span>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<!-- ==========================================================
+     LAYOUT 08: DIAGRAM RYBIEJ OŚCI (ISHIKAWA / CAUSE & EFFECT)
+     Zastosowanie: Dogłębna analiza przyczyn awarii, opóźnień lub problemu technicznego.
+     LLM TIP: Poziomy kręgosłup i ukośne żebra (45 stopni) ze strzałkami w SVG wskazują na efekt po prawej.
+     ========================================================== -->
+<div class="slide-container" data-title="Diagram Ishikawa" data-type="Ishikawa">
+  <header class="slide-header">
+    <span class="slide-kicker">ROOT CAUSE // DIAGRAM ISHIKAWA</span>
+    <h2 class="slide-title">Analiza Przyczyn Źródłowych Awarii Raportowania</h2>
+  </header>
+
+  <div class="slide-body">
+    <div style="position: relative; width: 100%; height: 430px; display: flex; align-items: center;">
+
+      <!-- PŁÓTNO GEOMETRII WEKTOROWEJ SVG (KRĘGOSŁUP I ŻEBRA) -->
+      <svg viewBox="0 0 1120 400" preserveAspectRatio="xMidYMid meet" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;">
+        <defs>
+          <marker id="fishMainArrow" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto">
+            <polygon points="0 2, 8 5, 0 8" fill="var(--text-dark)" />
+          </marker>
+          <marker id="ribArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <polygon points="0 1, 8 4, 0 7" fill="#64748B" />
+          </marker>
+        </defs>
+
+        <!-- Główny kręgosłup skierowany w prawo na problem -->
+        <line x1="60" y1="200" x2="880" y2="200" stroke="var(--text-dark)" stroke-width="4" marker-end="url(#fishMainArrow)" />
+
+        <!-- Górne żebra (ukośne 45 stopni w prawo-dół) -->
+        <line x1="220" y1="60" x2="360" y2="200" stroke="#64748B" stroke-width="3" marker-end="url(#ribArrow)" />
+        <line x1="540" y1="60" x2="680" y2="200" stroke="#64748B" stroke-width="3" marker-end="url(#ribArrow)" />
+
+        <!-- Dolne żebra (ukośne 45 stopni w prawo-górę) -->
+        <line x1="220" y1="340" x2="360" y2="200" stroke="#64748B" stroke-width="3" marker-end="url(#ribArrow)" />
+        <line x1="540" y1="340" x2="680" y2="200" stroke="#64748B" stroke-width="3" marker-end="url(#ribArrow)" />
+      </svg>
+
+      <!-- WARSTWA ETYKIET I KART W CZYSTYM HTML (TEXT-FREE SVG) -->
+      <div style="position: absolute; inset: 0; z-index: 2; pointer-events: none;">
+
+        <!-- Kategoria 1: Ludzie (Góra-Lewo) -->
+        <div class="fragment" style="position: absolute; top: 15px; left: 120px; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 8px; padding: 10px 14px; max-width: 220px; pointer-events: auto;">
+          <strong style="color: var(--primary);">Ludzie:</strong> Zmęczenie powtarzalnym manualnym klejeniem slajdów.
+        </div>
+
+        <!-- Kategoria 2: Procesy (Góra-Środek) -->
+        <div class="fragment" style="position: absolute; top: 15px; left: 450px; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 8px; padding: 10px 14px; max-width: 220px; pointer-events: auto;">
+          <strong style="color: var(--primary);">Procesy:</strong> Nadmierna liczba rund akceptacji (4+ silosy).
+        </div>
+
+        <!-- Kategoria 3: Narzędzia (Dół-Lewo) -->
+        <div class="fragment" style="position: absolute; bottom: 15px; left: 120px; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 8px; padding: 10px 14px; max-width: 220px; pointer-events: auto;">
+          <strong style="color: var(--primary);">Narzędzia:</strong> Niespójne szablony i rozbieżne fonty.
+        </div>
+
+        <!-- Kategoria 4: Dane (Dół-Środek) -->
+        <div class="fragment" style="position: absolute; bottom: 15px; left: 450px; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 8px; padding: 10px 14px; max-width: 220px; pointer-events: auto;">
+          <strong style="color: var(--primary);">Dane:</strong> Brak centralnego schema registry i reguł walidacji.
+        </div>
+
+        <!-- GŁOWA RYBY (EFEKT / AWARIA PO PRAWEJ) -->
+        <div style="position: absolute; right: 20px; top: 165px; background: var(--bg-dark); color: #FFFFFF; padding: 16px 22px; border-radius: 10px; font-size: 16px; font-weight: 700; pointer-events: auto;">
+          Opóźnienia Raportów (-14 dni)
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>PREZENTACJA BIZNESOWA</span>
+    <span>Slajd X</span>
+  </div>
+</div>

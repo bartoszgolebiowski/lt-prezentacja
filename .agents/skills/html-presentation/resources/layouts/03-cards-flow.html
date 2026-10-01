@@ -1,0 +1,73 @@
+<!-- ==========================================================
+     LAYOUT 03: TRZY KOLUMNY ZE STRZAŁKAMI PRZEPŁYWU (FLOW ARROWS)
+     Zastosowanie: 3 filary strategii, etapy przepływu danych lub moduły.
+     LLM TIP: Poziome strzałki SVG między kartami ilustrują synergiczny przepływ wartości.
+     ========================================================== -->
+<div class="slide-container" data-title="Trzy Filary Architektury" data-type="3 Kolumny">
+  <header class="slide-header">
+    <span class="slide-kicker">FILARY ARCHITEKTURY // END-TO-END</span>
+    <h2 class="slide-title">Trzy Kluczowe Warstwy Nowego Ekosystemu</h2>
+  </header>
+
+  <div class="slide-body">
+    <div style="display: grid; grid-template-columns: 1fr 36px 1fr 36px 1fr; align-items: center; height: 100%;">
+
+      <!-- KARTA 1 -->
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 32px 24px; height: 100%; display: flex; flex-direction: column;">
+        <div style="font-size: 26px; font-weight: 900; color: var(--primary); margin-bottom: 14px;">01</div>
+        <h3 style="font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Ingestia Danych</h3>
+        <p style="font-size: 15px; color: #475569; line-height: 1.45;">
+          <strong>Standaryzacja:</strong> Centralny katalog schematów odrzuca niezgodne payloady na wejściu.
+        </p>
+      </div>
+
+      <!-- STRZAŁKA SVG 1 -> 2 -->
+      <div style="display: flex; justify-content: center;">
+        <svg viewBox="0 0 36 24" style="width: 28px; height: 20px;">
+          <defs>
+            <marker id="cardFlowArrow1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 1, 8 4, 0 7" fill="var(--primary)" />
+            </marker>
+          </defs>
+          <line x1="2" y1="12" x2="28" y2="12" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" marker-end="url(#cardFlowArrow1)" />
+        </svg>
+      </div>
+
+      <!-- KARTA 2 (WYRÓŻNIONA) -->
+      <div class="fragment" style="background: var(--bg-white); border: 1.5px solid var(--primary); border-radius: 12px; padding: 32px 24px; height: 100%; display: flex; flex-direction: column;">
+        <div style="font-size: 26px; font-weight: 900; color: var(--primary); margin-bottom: 14px;">02</div>
+        <h3 style="font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Silnik Reguł AI</h3>
+        <p style="font-size: 15px; color: #475569; line-height: 1.45;">
+          <strong>Dynamiczny routing:</strong> Klasyfikacja zapytań i równoległa egzekucja subagentów.
+        </p>
+      </div>
+
+      <!-- STRZAŁKA SVG 2 -> 3 -->
+      <div style="display: flex; justify-content: center;">
+        <svg viewBox="0 0 36 24" style="width: 28px; height: 20px;">
+          <defs>
+            <marker id="cardFlowArrow2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 1, 8 4, 0 7" fill="var(--primary)" />
+            </marker>
+          </defs>
+          <line x1="2" y1="12" x2="28" y2="12" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" marker-end="url(#cardFlowArrow2)" />
+        </svg>
+      </div>
+
+      <!-- KARTA 3 -->
+      <div class="fragment" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 32px 24px; height: 100%; display: flex; flex-direction: column;">
+        <div style="font-size: 26px; font-weight: 900; color: var(--primary); margin-bottom: 14px;">03</div>
+        <h3 style="font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Bramki Bezpieczeństwa</h3>
+        <p style="font-size: 15px; color: #475569; line-height: 1.45;">
+          <strong>Determinizm:</strong> Końcowa weryfikacja schematu i blokada halucynacji w locie.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>PREZENTACJA BIZNESOWA</span>
+    <span>Slajd X</span>
+  </div>
+</div>
